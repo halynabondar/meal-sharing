@@ -5,8 +5,8 @@ import bodyParser from "body-parser";
 import knex from "./database_client.js";
 import nestedRouter from "./routers/nested.js";
 
-// const meals = await knex.raw("SELECT * FROM Meal");
-// console.log(meals);
+const meals = await knex.raw("SELECT * FROM Meal");
+console.log(meals);
 
 const app = express();
 app.use(cors());
@@ -19,35 +19,61 @@ app.get("/my-route", (req, res) => {
 });
 
 // Respond with all meals in the future (relative to the 'when' datetime)
-app.get('/future-meals', (req, res) => {
-  const now = new Date();
-  const futureMeals = meals.filter(meal => meal.datetime > now);
-  res.json(futureMeals);
+app.get('/future-meals', async (req, res) => {
+  try {
+    const meals = await knex.raw("SELECT * FROM Meal WHERE `when` > NOW()");
+    res.json(meals[0].length ? meals[0] : []); // meals[0] because knex.raw returns an array
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Respond with all meals in the past (relative to the 'when' datetime)
-app.get('/past-meals', (req, res) => {
-  const now = new Date();
-  const pastMeals = meals.filter(meal => meal.datetime < now);
-  res.json(pastMeals);
+app.get('/past-meals', async (req, res) => {
+  try {
+    const meals = await knex.raw("SELECT * FROM Meal WHERE `when` < NOW()");
+    res.json(meals[0].length ? meals[0] : []); // Return empty array if no meals
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Respond with all meals sorted by ID
-app.get('/all-meals', (req, res) => {
-  const sortedMeals = meals.sort((a, b) => a.id - b.id);
-  res.json(sortedMeals);
+app.get('/all-meals', async (req, res) => {
+  try {
+    const meals = await knex.raw("SELECT * FROM Meal ORDER BY id");
+    res.json(meals[0].length ? meals[0] : []);
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Respond with the first meal (meaning with the minimum id)
-app.get('/first-meal', (req, res) => {
-  const firstMeal = meals.reduce((min, meal) => (meal.id < min.id ? meal : min), meals[0]);
-  res.json(firstMeal);
+app.get('/first-meal', async (req, res) => {
+  try {
+    const meal = await knex.raw("SELECT * FROM Meal ORDER BY id LIMIT 1");
+    if (meal[0].length) {
+      res.json(meal[0][0]); // Return the first meal object
+    } else {
+      res.status(404).json({ error: 'No meals found' });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // Respond with the last meal (meaning with the maximum id)
-app.get('/last-meal', (req, res) => {
-  const lastMeal = meals.reduce((max, meal) => (meal.id > max.id ? meal : max), meals[0]);
-  res.json(lastMeal);
+app.get('/last-meal', async (req, res) => {
+  try {
+    const meal = await knex.raw("SELECT * FROM Meal ORDER BY id DESC LIMIT 1");
+    if (meal[0].length) {
+      res.json(meal[0][0]); // Return the last meal object
+    } else {
+      res.status(404).json({ error: 'No meals found' });
+    }
+  } catch (err) {
+    res.status(500).json({ error: 'Internal server error' });
+  }
 });
 
 // You can delete this route once you add your own routes
