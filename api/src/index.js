@@ -18,7 +18,7 @@ app.get("/my-route", (req, res) => {
 app.get('/future-meals', async (req, res) => {
   try {
     const meals = await knex("meal").where("when", ">", knex.fn.now());
-    res.json(meals[0].length ? meals[0] : []); // meals[0] because knex.raw returns an array
+    res.json(meals);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -28,7 +28,7 @@ app.get('/future-meals', async (req, res) => {
 app.get('/past-meals', async (req, res) => {
   try {
     const meals = await knex("meal").where("when", "<", knex.fn.now());
-    res.json(meals[0].length ? meals[0] : []); // Return empty array if no meals
+    res.json(meals);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -38,7 +38,7 @@ app.get('/past-meals', async (req, res) => {
 app.get('/all-meals', async (req, res) => {
   try {
     const meals = await knex("Meal").orderBy("id");
-    res.json(meals[0].length ? meals[0] : []);
+    res.json(meals);
   } catch (err) {
     res.status(500).json({ error: 'Internal server error' });
   }
@@ -47,9 +47,10 @@ app.get('/all-meals', async (req, res) => {
 // Respond with the first meal (meaning with the minimum id)
 app.get('/first-meal', async (req, res) => {
   try {
-    const meal = await knex("meal").orderBy("id").limit(1);
-    if (meal[0].length) {
-      res.json(meal[0][0]); // Return the first meal object
+    const meal = await knex("meal").orderBy("id").first();
+    res.json(meal[0][0]); // Return the first meal object
+    if (meal) {
+      res.json(meal); // Return the first meal object
     } else {
       res.status(404).json({ error: 'No meals found' });
     }
@@ -61,9 +62,10 @@ app.get('/first-meal', async (req, res) => {
 // Respond with the last meal (meaning with the maximum id)
 app.get('/last-meal', async (req, res) => {
   try {
-    const meal = await knex("meal").orderBy("id", "desc").limit(1);
-    if (meal[0].length) {
-      res.json(meal[0][0]); // Return the last meal object
+    const meal = await knex("meal").orderBy("id", "desc").first();
+    res.json(meal[0][0]); // Return the last meal object
+    if (meal) {
+      res.json(meal); // Return the last meal object
     } else {
       res.status(404).json({ error: 'No meals found' });
     }
