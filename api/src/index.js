@@ -48,7 +48,6 @@ app.get('/all-meals', async (req, res) => {
 app.get('/first-meal', async (req, res) => {
   try {
     const meal = await knex("meal").orderBy("id").first();
-    res.json(meal[0][0]); // Return the first meal object
     if (meal) {
       res.json(meal); // Return the first meal object
     } else {
@@ -63,7 +62,6 @@ app.get('/first-meal', async (req, res) => {
 app.get('/last-meal', async (req, res) => {
   try {
     const meal = await knex("meal").orderBy("id", "desc").first();
-    res.json(meal[0][0]); // Return the last meal object
     if (meal) {
       res.json(meal); // Return the last meal object
     } else {
