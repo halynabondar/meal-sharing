@@ -1,12 +1,12 @@
 import express from 'express';
 import knex from '../database_client.js';
 
-const router = express.Router();
+const reservationsRouter = express.Router();
 
 // Route: GET /api/reservations - Returns all reservations
-router.get('/', async (req, res) => {
+reservationsRouter.get('/', async (req, res) => {
     try {
-        const reservations = await knex('reservation').select('*');
+        const reservations = await knex('reservation');
         res.json(reservations);
     } catch (error) {
         res.status(500).json({error: 'Failed to fetch reservations'});
@@ -14,7 +14,7 @@ router.get('/', async (req, res) => {
 });
 
 // Route: POST /api/reservations - Adds a new reservation to the database
-router.post('/', async (req, res) => {
+reservationsRouter.post('/', async (req, res) => {
     try {
         const newReservation = req.body;
         const [id] = await knex('reservation').insert(newReservation);
@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
 });
 
 // Route: GET /api/reservations/:id - Returns a reservation by ID
-router.get('/:id', async (req, res) => {
+reservationsRouter.get('/:id', async (req, res) => {
     try {
         const reservation = await knex('reservation')
             .where({id: req.params.id})
@@ -44,7 +44,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route: PUT /api/reservations/:id - Updates a reservation by ID
-router.put('/:id', async (req, res) => {
+reservationsRouter.put('/:id', async (req, res) => {
     try {
         const updated = await knex('reservation').where({id: req.params.id}).update(req.body);
         if (updated) {
@@ -61,7 +61,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Route: DELETE /api/reservations/:id - Deletes a reservation by ID
-router.delete('/:id', async (req, res) => {
+reservationsRouter.delete('/:id', async (req, res) => {
     try {
         const deleted = await knex('reservation')
             .where({id: req.params.id})
@@ -76,4 +76,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default reservationsRouter;

@@ -1,32 +1,32 @@
 import express from 'express';
 import knex from "../database_client.js";
 
-const router = express.Router();
+const mealsRouter = express.Router();
 
 // Route: GET /api/meals - Returns all meals
-router.get('/', async (req, res) => {
+mealsRouter.get('/', async (req, res, next) => {
     try {
-        const meals = await knex('meal').select('*');
+        const meals = await knex('meal');
         res.json(meals);
+        next();
     } catch (error) {
         res.status(500).json({ error: 'Failed to fetch meals' });
     }
 });
 
 // Route: POST /api/meals - Adds a new meal to the database
-router.post('/', async (req, res) => {
+mealsRouter.post('/', async (req, res, next) => {
     try {
         const newMeal = req.body;
-        const [id] = await knex('meal').insert(newMeal);
-        const insertedMeal = await knex('meal').where({ id }).first();
-        res.status(201).json(insertedMeal);
+        const [mealId] = await knex('meal').insert(newMeal);
+        res.status(201).json({message: "Meal created successfully.", mealId});
     } catch (error) {
-        res.status(500).json({ error: 'Failed to add meal' });
+        next(error);
     }
 });
 
 // Route: GET /api/meals/:id - Returns a meal by ID
-router.get('/:id', async (req, res) => {
+mealsRouter.get('/:id', async (req, res) => {
     try {
         const meal = await knex('meal').where({ id: req.params.id }).first();
         if (meal) {
@@ -40,7 +40,7 @@ router.get('/:id', async (req, res) => {
 });
 
 // Route: PUT /api/meals/:id - Updates a meal by ID
-router.put('/:id', async (req, res) => {
+mealsRouter.put('/:id', async (req, res) => {
     try {
         const updated = await knex('meal').where({ id: req.params.id }).update(req.body);
         if (updated) {
@@ -55,7 +55,7 @@ router.put('/:id', async (req, res) => {
 });
 
 // Route: DELETE /api/meals/:id - Deletes a meal by ID
-router.delete('/:id', async (req, res) => {
+mealsRouter.delete('/:id', async (req, res) => {
     try {
         const deleted = await knex('meal').where({ id: req.params.id }).del();
         if (deleted) {
@@ -68,4 +68,4 @@ router.delete('/:id', async (req, res) => {
     }
 });
 
-module.exports = router;
+export default mealsRouter;
