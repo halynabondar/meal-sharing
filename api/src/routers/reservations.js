@@ -24,7 +24,7 @@ reservationsRouter.get('/', async (req, res) => {
             query = query.where('created_date', '<=', dateBefore);
         }
 
-        // Sort results (default is by 'id' ascending)
+        // Sort results
         if (sortKey) {
             query = query.orderBy(sortKey, sortDir);
         }
