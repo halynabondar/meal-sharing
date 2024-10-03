@@ -6,7 +6,35 @@ const reservationsRouter = express.Router();
 // Route: GET /api/reservations - Returns all reservations
 reservationsRouter.get('/', async (req, res) => {
     try {
-        const reservations = await knex('reservation');
+        let query = knex('reservation');
+
+        const {
+            dateAfter,
+            dateBefore,
+            limit,
+            sortKey,
+            sortDir
+        } = req.query;
+
+        // Filter by date range
+        if (dateAfter) {
+            query = query.where('created_date', '>=', dateAfter);
+        }
+        if (dateBefore) {
+            query = query.where('created_date', '<=', dateBefore);
+        }
+
+        // Sort results (default is by 'id' ascending)
+        if (sortKey) {
+            query = query.orderBy(sortKey, sortDir);
+        }
+
+        // Limit the number of results
+        if (limit) {
+            query = query.limit(parseInt(limit));
+        }
+
+        const reservations = await query;
         res.json(reservations);
     } catch (error) {
         res.status(500).json({error: 'Failed to fetch reservations'});
