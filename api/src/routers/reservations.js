@@ -16,6 +16,23 @@ reservationsRouter.get('/', async (req, res) => {
             sortDir
         } = req.query;
 
+        // Validation
+        if (limit && isNaN(parseInt(limit))) {
+            return res.status(400).json({ error: 'Invalid limit: must be an integer.' });
+        }
+
+        if (dateAfter && isNaN(Date.parse(dateAfter))) {
+            return res.status(400).json({ error: 'Invalid dateAfter: must be a valid date.' });
+        }
+
+        if (dateBefore && isNaN(Date.parse(dateBefore))) {
+            return res.status(400).json({ error: 'Invalid dateBefore: must be a valid date.' });
+        }
+
+        if (sortDir && !['asc', 'desc'].includes(sortDir)) {
+            return res.status(400).json({ error: 'Invalid sortDir: must be either "asc" or "desc".' });
+        }
+
         // Filter by date range
         if (dateAfter) {
             query = query.where('created_date', '>=', dateAfter);

@@ -19,14 +19,44 @@ mealsRouter.get('/', async (req, res, next) => {
             sortDir
         } = req.query;
 
+        // Validation
+        if (maxPrice && isNaN(parseFloat(maxPrice))) {
+            return res.status(400).json({ error: 'Invalid maxPrice: must be a valid number.' });
+        }
+
+        if (limit && isNaN(parseInt(limit))) {
+            return res.status(400).json({ error: 'Invalid limit: must be an integer.' });
+        }
+
+        if (dateAfter && isNaN(Date.parse(dateAfter))) {
+            return res.status(400).json({ error: 'Invalid dateAfter: must be a valid date.' });
+        }
+
+        if (dateBefore && isNaN(Date.parse(dateBefore))) {
+            return res.status(400).json({ error: 'Invalid dateBefore: must be a valid date.' });
+        }
+
+        if (sortDir && !['asc', 'desc'].includes(sortDir)) {
+            return res.status(400).json({ error: 'Invalid sortDir: must be either "asc" or "desc".' });
+        }
+
         // Filtering by maxPrice
         if (maxPrice) {
             query = query.where('price', '<=', parseFloat(maxPrice));
         }
 
         // Filtering by availability
-        if (availableReservations) {
-            query = query.where('available_reservations', '>', 0);
+        if (availableReservations !== undefined) {
+            const hasAvailableSpots = availableReservations === "true";
+            query
+                .leftJoin("reservation", "meal.id", "reservation.meal_id")
+                .select("meal.*")
+                .groupBy("meal.id");
+            if (hasAvailableSpots) {
+                query.havingRaw("COUNT(reservation.id) < meal.max_reservations");
+            } else {
+                query.havingRaw("COUNT(reservation.id) >= meal.max_reservations");
+            }
         }
 
         // Filtering by title
@@ -44,7 +74,7 @@ mealsRouter.get('/', async (req, res, next) => {
 
         // Sorting
         if (sortKey) {
-            query = query.orderBy(sortKey, sortDir);
+            query = query.orderBy(sortKey, sortDir || 'asc');
         }
 
         // Limiting the results
@@ -89,17 +119,22 @@ mealsRouter.get('/:id', async (req, res) => {
 // Route: PUT /api/meals/:id - Updates a meal by ID
 mealsRouter.put('/:id', async (req, res) => {
     try {
-        const updated = await knex('meal').where({id: req.params.id}).update(req.body);
+        // Updating the meal and getting the count of updated rows
+        const updated = await knex('meal').where({ id: req.params.id }).update(req.body);
+
         if (updated) {
-            const updatedMeal = await knex('meal').where({id: req.params.id}).first();
-            res.json(updatedMeal);
+            // If update was successful, return a success message
+            res.json({ message: 'Meal updated successfully' });
         } else {
-            res.status(404).json({error: 'Meal not found'});
+            // If no rows were updated, the meal doesn't exist
+            res.status(404).json({ error: 'Meal not found' });
         }
     } catch (error) {
-        res.status(500).json({error: 'Failed to update meal'});
+        // Handling errors
+        res.status(500).json({ error: 'Failed to update meal' });
     }
 });
+
 
 // Route: DELETE /api/meals/:id - Deletes a meal by ID
 mealsRouter.delete('/:id', async (req, res) => {
@@ -119,15 +154,29 @@ mealsRouter.delete('/:id', async (req, res) => {
 mealsRouter.get("/:meal_id/reviews", async (req, res, next) => {
     try {
         const id = req.params.meal_id;
-        const mealReviews = await knex("review").where("meal_id", id);
-        if (mealReviews.length === 0) {
-            res.json({ message: "Meal not found" });
-        } else {
-            res.json(mealReviews);
+
+        // Validate if id is a valid format (if needed)
+        if (!id || isNaN(id)) {
+            return res.status(400).json({ error: "Invalid meal ID" });  // Bad Request
         }
+
+        const mealReviews = await knex("review").where("meal_id", id);
+
+        // If no reviews found, return 404
+        if (mealReviews.length === 0) {
+            return res.status(404).json({ message: "Meal not found" });
+        }
+
+        // Return reviews with 200 status
+        res.status(200).json(mealReviews);
+
     } catch (error) {
+        // Log error for server logs (optional)
+        console.error(error);
+
+        // Forward error to an error handling middleware
         next(error);
     }
-})
+});
 
 export default mealsRouter;

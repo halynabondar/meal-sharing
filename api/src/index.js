@@ -43,7 +43,7 @@ app.get('/all-meals', async (req, res) => {
     const meals = await knex("meal").orderBy("id");
     res.json(meals);
   } catch (err) {
-    res.status(500).json({ error: 'Internal server error', exception: err.toString() });
+    res.status(500).json({ error: err.toString() });
   }
 });
 

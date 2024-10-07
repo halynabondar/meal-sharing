@@ -6,8 +6,8 @@ const reviewRouter = express.Router();
 // Returns all reviews.
 reviewRouter.get("/", async (req, res, next) => {
     try {
-        const getAllReviews = await knex("review");
-        res.json(getAllReviews);
+        const reviews = await knex("review");
+        res.json(reviews);
     } catch (error) {
         next(error);
     }
