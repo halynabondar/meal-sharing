@@ -5,13 +5,11 @@ import bodyParser from "body-parser";
 import knex from "./database_client.js";
 import mealsRouter from "./routers/meals.js";
 import reservationsRouter from "./routers/reservations.js";
+import reviewRouter from "./routers/reviews.js";
 
 const app = express();
-
 app.use(cors());
 app.use(bodyParser.json());
-app.use("./routers", mealsRouter);
-app.use("./routers", reservationsRouter);
 
 const apiRouter = express.Router();
 
@@ -42,10 +40,10 @@ app.get('/past-meals', async (req, res) => {
 // Respond with all meals sorted by ID
 app.get('/all-meals', async (req, res) => {
   try {
-    const meals = await knex("Meal").orderBy("id");
+    const meals = await knex("meal").orderBy("id");
     res.json(meals);
   } catch (err) {
-    res.status(500).json({ error: 'Internal server error' });
+    res.status(500).json({ error: err.toString() });
   }
 });
 
@@ -78,6 +76,9 @@ app.get('/last-meal', async (req, res) => {
 });
 
 app.use("/api", apiRouter);
+apiRouter.use("/meals", mealsRouter);
+apiRouter.use("/reservations", reservationsRouter);
+apiRouter.use("/reviews", reviewRouter);
 
 app.listen(process.env.PORT, () => {
   console.log(`API listening on port ${process.env.PORT}`);
