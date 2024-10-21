@@ -6,7 +6,52 @@ const reservationsRouter = express.Router();
 // Route: GET /api/reservations - Returns all reservations
 reservationsRouter.get('/', async (req, res) => {
     try {
-        const reservations = await knex('reservation');
+        let query = knex('reservation');
+
+        const {
+            dateAfter,
+            dateBefore,
+            limit,
+            sortKey,
+            sortDir
+        } = req.query;
+
+        // Validation
+        if (limit && isNaN(parseInt(limit))) {
+            return res.status(400).json({ error: 'Invalid limit: must be an integer.' });
+        }
+
+        if (dateAfter && isNaN(Date.parse(dateAfter))) {
+            return res.status(400).json({ error: 'Invalid dateAfter: must be a valid date.' });
+        }
+
+        if (dateBefore && isNaN(Date.parse(dateBefore))) {
+            return res.status(400).json({ error: 'Invalid dateBefore: must be a valid date.' });
+        }
+
+        if (sortDir && !['asc', 'desc'].includes(sortDir)) {
+            return res.status(400).json({ error: 'Invalid sortDir: must be either "asc" or "desc".' });
+        }
+
+        // Filter by date range
+        if (dateAfter) {
+            query = query.where('created_date', '>=', dateAfter);
+        }
+        if (dateBefore) {
+            query = query.where('created_date', '<=', dateBefore);
+        }
+
+        // Sort results
+        if (sortKey) {
+            query = query.orderBy(sortKey, sortDir);
+        }
+
+        // Limit the number of results
+        if (limit) {
+            query = query.limit(parseInt(limit));
+        }
+
+        const reservations = await query;
         res.json(reservations);
     } catch (error) {
         res.status(500).json({error: 'Failed to fetch reservations'});
