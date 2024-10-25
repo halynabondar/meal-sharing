@@ -1,7 +1,7 @@
 "use client"
 
 import React from 'react';
-import MealsList from '../MealsList';
+import MealsList from '../MealsList.jsx';
 
 function HomePage() {
     return (
