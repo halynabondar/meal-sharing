@@ -22,17 +22,17 @@ function MealsList() {
     return (
         <>
             <h2>Meals</h2>
-        {meals.length > 0 ? (
-            meals.map((meal, index) => (
-                <div key={index}>
-                    <h3>{meal.title}</h3>
-                    <p>{meal.description}</p>
-                    <p>{meal.price}</p>
-                </div>
-            ))
-        ) : (
-            <p>Loading meals...</p>
-        )}
+            {meals.length > 0 ? (
+                meals.map((meal, index) => (
+                    <div key={index}>
+                        <h3>{meal.title}</h3>
+                        <p>{meal.description}</p>
+                        <p>{meal.price}</p>
+                    </div>
+                ))
+            ) : (
+                <p>Loading meals...</p>
+            )}
         </>
     )
 }
