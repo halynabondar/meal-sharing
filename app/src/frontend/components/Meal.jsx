@@ -17,7 +17,7 @@ function Meal({meal}) {
                 icon={faStar}/></p>
             <p className={styles.mealDescription}>{meal.description}</p>
             <p className={styles.mealPrice}><b>Price:</b> {meal.price} kr</p>
-            <button className={styles.mealBtn}>Meal info</button>
+            <button className={styles.mealBtn}>Add a reservation</button>
         </div>
     );
 }

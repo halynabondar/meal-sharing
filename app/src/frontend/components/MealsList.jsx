@@ -11,9 +11,8 @@ function MealsList() {
             const response = await fetch('http://localhost:3006/all-meals');
             const data = await response.json();
             setMeals(data);
-            console.log(data);
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
     }
 
@@ -27,7 +26,7 @@ function MealsList() {
             <div className={styles.mealsContainer}>
                 {meals.length > 0 ? (
                     meals.map((meal, index) => (
-                        <Meal meal={meal} />
+                        <Meal key={index} meal={meal} />
                     ))
                 ) : (
                     <p>Loading meals...</p>

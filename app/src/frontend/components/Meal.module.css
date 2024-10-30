@@ -17,7 +17,7 @@ a {
     transition: all 0.3s;
 
     &:hover {
-        border: 2px solid mediumturquoise;
+        border: 1px solid mediumturquoise;
     }
 }
 .mealTitle, .mealDescription, .mealPrice, .mealRating {
