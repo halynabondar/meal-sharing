@@ -1,13 +1,26 @@
 import React from 'react';
-import MealsList from '../MealsList.jsx';
 import styles from './HomePage.module.css';
+import Navbar from "../Navbar.jsx";
 
-function HomePage({title, description, price}) {
+function HomePage() {
+    const backgroundStyle = {
+        backgroundImage: 'url(/background_homepage.jpg)',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center',
+        height: '1000px',
+        width: '100%'
+    };
     return (
-        <div>
-            <h1 className={styles.title}>Welcome to the HomePage</h1>
-            <MealsList title={title} description={description} price={price} />
-        </div>
+        <>
+            <div style={backgroundStyle}>
+                <Navbar/>
+                <section className={styles.container}>
+                    <h1 className={styles.title}>We are sharing food</h1>
+                    <button className={styles.btn}>Find a meal</button>
+                </section>
+            </div>
+        </>
     );
 }
 

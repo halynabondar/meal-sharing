@@ -1,0 +1,21 @@
+.container {
+    max-width: 1300px;
+    margin: 40px 80px 60px 80px;
+    justify-content: center;
+    display: flex;
+    gap: 4rem;
+}
+.mealsContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 3rem;
+}
+.mealsListTitle {
+    text-align: center;
+    margin: 20px;
+}
+.aside {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}

@@ -17,7 +17,7 @@ a {
     transition: all 0.3s;
 
     &:hover {
-        border: 1px solid mediumturquoise;
+        border: 1px solid #7ABA78;
     }
 }
 .mealTitle, .mealDescription, .mealPrice, .mealRating {
@@ -29,9 +29,12 @@ a {
 .mealImage img {
     width: 100%;
     height: 180px;
+    border-radius: 15px 15px 0 0;
 }
 .mealDescription {
     font-style: italic;
+    font-size: 16px;
+    line-height: 22px;
 }
 .mealPrice {
 }
@@ -42,7 +45,7 @@ a {
 .mealBtn {
     font-weight: bold;
     border: none;
-    background-color: #31bab6;
+    background-color: #7ABA78;
     padding: 5px 15px;
     border-radius: 7px;
     transition: 0.3s;
@@ -50,6 +53,7 @@ a {
 
     &:hover {
         cursor: pointer;
-        background-color: mediumturquoise;
+        color: white;
+        background-color: #0A6847;
     }
 }

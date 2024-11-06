@@ -1,0 +1,51 @@
+.searchForm {
+    display: flex;
+    gap: 10px;
+    position: relative;
+    width: 500px;
+    margin: 30px 0 20px 80px;
+}
+.searchBtn {
+    cursor: pointer;
+    padding: 10px 30px;
+    border-radius: 12px;
+    background-color: #F6E9B2;
+    transition: all 0.5s;
+    font-size: 16px;
+    color: #0A6847;
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #0A6847;
+    }
+}
+.searchInput {
+    border-radius: 12px;
+    border: lightgray 1px solid;
+    width: 500px;
+    padding: 10px 35px 10px 35px;
+    font-size: 16px;
+}
+.iconClear, .iconSearch {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.iconClear {
+    right: 130px;
+    font-size: 16px;
+    color: lightgray;
+    display: none;
+}
+
+.iconSearch {
+    left: 10px;
+    font-size: 16px;
+    color: lightgray;
+}
+
+.searchInput:not(:placeholder-shown) + .iconClear {
+    display: block;
+}

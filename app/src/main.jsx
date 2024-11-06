@@ -3,7 +3,8 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import HomePage from "./frontend/components/HomePage/HomePage.jsx";
 import "./main.css";
-import MealsList from "./frontend/components/MealsList.jsx";
+import MealsList from "./frontend/components/Meals/MealsList.jsx";
+import AboutUs from "./frontend/components/AboutUs/AboutUs.jsx";
 
 const router = createBrowserRouter([
   {
@@ -11,8 +12,12 @@ const router = createBrowserRouter([
     element: <HomePage />,
   },
   {
-    path: "/meal",
+    path: "/meals",
     element: <MealsList />,
+  },
+  {
+    path: "/aboutUs",
+    element: <AboutUs />,
   }
 ]);
 
