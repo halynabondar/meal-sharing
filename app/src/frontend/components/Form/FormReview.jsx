@@ -3,7 +3,7 @@ import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faStar} from "@fortawesome/free-solid-svg-icons";
 import styles from "./Form.module.css";
 
-function FormReview() {
+function FormReview({modalActive}) {
     const path = document.location.pathname;
     const idMatch = path.match(/^\/meals\/([^\/]+)$/);
 
@@ -44,10 +44,10 @@ function FormReview() {
         const fetchData = async () => {
             try {
                 const response = await fetch(`http://localhost:3007/api/reviews`, fetchOptions);
-                if (response.status === 200) {
-                    alert(response.body);
+                if (response.status === 200 || response.status === 201) {
+                    modalActive(false);
                 } else {
-                    alert(response.body);
+                    alert(response.body.toString());
                 }
             } catch (error) {
                 console.log(error)
@@ -68,8 +68,8 @@ function FormReview() {
                     </div>
                     <div className={styles.formItem}>
                         <label className={styles.formLabel} htmlFor="description">Description</label>
-                        <input value={formData.description} onChange={handleInputChange}
-                               placeholder="Enter description..." type="text" name="description" id="description"
+                        <textarea value={formData.description} onChange={handleInputChange}
+                               placeholder="Enter description..." name="description" id="description"
                                className={styles.formInputDescription} required/>
                     </div>
                     <div className={styles.mealRating}><FontAwesomeIcon icon={faStar}/><FontAwesomeIcon

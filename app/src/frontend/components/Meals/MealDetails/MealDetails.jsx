@@ -90,10 +90,10 @@ function MealDetails({meal}) {
                 </div>
             </div>
             <Modal active={modalReviewActive} setActive={setModalReviewActive}>
-                <FormReview/>
+                <FormReview modalActive={setModalReviewActive}/>
             </Modal>
             <Modal active={modalReserveActive} setActive={setModalReserveActive}>
-                <FormReservation/>
+                <FormReservation modalActive={setModalReserveActive}/>
             </Modal>
         </div>
     );

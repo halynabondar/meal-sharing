@@ -3,7 +3,7 @@
 import React, {useState} from "react";
 import styles from "./Form.module.css";
 
-function FormReservation() {
+function FormReservation({modalActive}) {
     const path = document.location.pathname;
     const idMatch = path.match(/^\/meals\/([^\/]+)$/);
 
@@ -38,10 +38,10 @@ function FormReservation() {
         const fetchData = async () => {
             try {
                 const response = await fetch(`http://localhost:3007/api/reservations`, fetchOptions);
-                if (response.status === 200) {
-                    alert(response.body);
+                if (response.status === 200 || response.status === 201) {
+                    modalActive(false);
                 } else {
-                    alert(response.body);
+                    alert(response.body.toString());
                 }
             } catch (error) {
                 console.log(error)
