@@ -10,6 +10,7 @@ mealsRouter.get('/', async (req, res, next) => {
 
         const {
             maxPrice,
+            minPrice,
             availableReservations,
             title,
             dateAfter,
@@ -38,6 +39,11 @@ mealsRouter.get('/', async (req, res, next) => {
 
         if (sortDir && !['asc', 'desc'].includes(sortDir)) {
             return res.status(400).json({ error: 'Invalid sortDir: must be either "asc" or "desc".' });
+        }
+
+        // Filtering by maxPrice
+        if (minPrice) {
+            query = query.where('price', '>=', parseFloat(minPrice));
         }
 
         // Filtering by maxPrice

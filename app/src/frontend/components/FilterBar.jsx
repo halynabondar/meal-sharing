@@ -23,6 +23,10 @@ function FilterBar() {
                         <input className={styles.input} type="Checkbox" id="highest" name="highest"></input>
                         <label htmlFor="highest">Highest rating</label>
                     </div>
+                    <div className={styles.item}>
+                        <input className={styles.input} type="Checkbox" id="available" name="available"></input>
+                        <label htmlFor="available">Available</label>
+                    </div>
                 </div>
             </fieldset>
         </>

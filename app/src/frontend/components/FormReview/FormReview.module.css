@@ -1,0 +1,26 @@
+.formContainer {
+    background: #7ABA78;
+    width: 400px;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 20px;
+}
+.reviewItem {}
+.formTitle {
+    font-size: 28px;
+    text-align: center;
+    font-weight: normal;
+}
+.form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.formLabelTitle {}
+.reviewInputTitle {}
+.formLabelDescription {}
+.reviewInputDescription {}
+.mealRating {}
+.formBtn {}

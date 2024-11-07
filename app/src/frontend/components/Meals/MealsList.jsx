@@ -11,7 +11,7 @@ function MealsList() {
 
     const fetchData = async () => {
         try {
-            const response = await fetch('http://localhost:3006/all-meals');
+            const response = await fetch(`http://localhost:3007/api/meals${document.location.search}`);
             const data = await response.json();
             setMeals(data);
         } catch (error) {
@@ -25,7 +25,7 @@ function MealsList() {
 
     return (
         <>
-            <Navbar/>
+            <Navbar />
             <Search />
             <section className={styles.container}>
                 <div className={styles.aside}>

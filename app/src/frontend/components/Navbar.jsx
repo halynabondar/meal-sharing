@@ -29,21 +29,21 @@ const Navbar = () => {
 
     const renderMenuItem = (item) => (
         <ListItem button key={item.text} onClick={() => handleNavigation(item.path)}>
-            <ListItemText primary={item.text} />
+            <ListItemText primary={item.text}/>
         </ListItem>
     );
 
     return (
-        <AppBar position="static" sx={{ backgroundColor: '#0A6847', marginBottom: "20px" }}>
+        <AppBar position="static" sx={{backgroundColor: '#0A6847'}}>
             <Toolbar>
-                <Typography variant="h6" style={{ flexGrow: 1 }}>
+                <Typography variant="h6" sx={{flexGrow: 1, fontFamily: "Great Vibes", fontSize: 32}}>
                     Meal Sharing
                 </Typography>
 
                 {isMobile ? (
                     <>
                         <IconButton color="inherit" onClick={() => setDrawerOpen(true)}>
-                            <MenuIcon />
+                            <MenuIcon/>
                         </IconButton>
                         <Drawer anchor="left" open={drawerOpen} onClose={() => setDrawerOpen(false)}>
                             <List>

@@ -8,19 +8,19 @@ function SortBar() {
                 <legend className={styles.legend}>Sort by:</legend>
                 <div className={styles.items}>
                     <div className={styles.item}>
-                        <input className={styles.input} type="Checkbox" id="name" name="name"></input>
+                        <input className={styles.input} type="radio" id="name" name="filterBy"></input>
                         <label htmlFor="name">Name</label>
                     </div>
                     <div className={styles.item}>
-                        <input className={styles.input} type="Checkbox" id="date" name="date"></input>
+                        <input className={styles.input} type="radio" id="date" name="filterBy"></input>
                         <label htmlFor="date">Date</label>
                     </div>
                     <div className={styles.item}>
-                        <input className={styles.input} type="Checkbox" id="price" name="price"></input>
+                        <input className={styles.input} type="radio" id="price" name="filterBy"></input>
                         <label htmlFor="price">Price</label>
                     </div>
                     <div className={styles.item}>
-                        <input className={styles.input} type="Checkbox" id="rating" name="rating"></input>
+                        <input className={styles.input} type="radio" id="rating" name="filterBy"></input>
                         <label htmlFor="rating">Rating</label>
                     </div>
                 </div>

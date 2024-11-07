@@ -1,13 +1,13 @@
 .container {
     max-width: 1300px;
-    margin: 40px 80px 60px 80px;
+    margin: 40px 120px 50px 120px;
     justify-content: center;
     display: flex;
     gap: 4rem;
 }
 .mealsContainer {
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;
 }
 .mealsListTitle {

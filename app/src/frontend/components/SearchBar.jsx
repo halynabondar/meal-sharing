@@ -2,8 +2,8 @@ import React from "react";
 import styles from './SearchBar.module.css';
 
 function clearInput() {
-    document.getElementById("search-input").value = "";
-    document.getElementById("search-input").focus();
+    document.getElementById("searchInput").value = "";
+    document.getElementById("searchInput").focus();
 }
 
 function Search() {
