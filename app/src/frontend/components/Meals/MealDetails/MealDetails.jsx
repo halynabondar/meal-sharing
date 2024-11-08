@@ -83,8 +83,10 @@ function MealDetails({meal}) {
                             <p className={styles.mealPrice}><b>Price:</b> {meal.price} kr</p>
                         </div>
                         <div className={styles.mealButtons}>
-                            <button className={styles.mealBtn} onClick={() => setModalReviewActive(true)}>Review</button>
-                            <button className={styles.mealBtn} onClick={() => setModalReserveActive(true)}>Reserve</button>
+                            <button className={styles.mealBtn} onClick={() => setModalReviewActive(true)}>Review
+                            </button>
+                            <button className={styles.mealBtn} onClick={() => setModalReserveActive(true)}>Reserve
+                            </button>
                         </div>
                     </div>
                 </div>

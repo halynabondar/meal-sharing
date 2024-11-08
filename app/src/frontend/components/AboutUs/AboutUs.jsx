@@ -1,8 +1,16 @@
+"use client"
+
 import React from 'react';
 import Navbar from "../Navbar.jsx";
 import styles from "./AboutUs.module.css";
+import {useNavigate} from "react-router-dom";
 
 export default function AboutUs() {
+    const navigate = useNavigate();
+    const handleFindMeal = () => {
+        navigate('/meals');
+    };
+
     const backgroundAboutUs = {
         backgroundImage: 'url(/public/background_about.jpg)',
         backgroundSize: '40%',
@@ -24,7 +32,7 @@ export default function AboutUs() {
                         nemo
                         quia. Aliquid eos explicabo in quas, quia quis sint veritatis? Architecto inventore, ipsam
                         laboriosam.</p>
-                    <button className={styles.btn}>Find a meal</button>
+                    <button className={styles.btn} onClick={handleFindMeal}>Find a meal</button>
                 </section>
             </div>
         </>
