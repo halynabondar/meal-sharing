@@ -1,0 +1,88 @@
+.formContainer {
+    background: #7ABA78;
+    width: 400px;
+    border-radius: 15px;
+    margin: 0 auto;
+    padding: 20px;
+    box-shadow: 1px 1px 15px 1px rgba(255, 255, 255, 0.3);
+}
+.formTitle {
+    font-size: 28px;
+    text-align: center;
+    font-weight: normal;
+    font-family: "Noto Sans JP", sans-serif;
+}
+.form {
+    margin-top: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+.formItem {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+}
+.formInputDescription {
+    height: 150px;
+    padding: 10px;
+    border-radius: 8px;
+    resize: none;
+}
+.formInput {
+    padding: 10px;
+    border-radius: 5px;
+}
+.formBtn {
+    margin-top: 15px;
+    background: white;
+    padding: 7px 10px;
+    color: black;
+    border: none;
+    border-radius: 10px;
+    transition: all ease 0.5s;
+    width: 40%;
+    font-weight: bold;
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #0A6847;
+    }
+}
+.mealRating {
+    color: #0A6847;
+    cursor: pointer;
+
+    &:hover {
+        color: #ffa600;
+    }
+}
+.modal {
+    height: 100vh;
+    width: 100vw;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.5s;
+}
+.modal.active {
+    opacity: 1;
+    pointer-events: all;
+}
+.modalContent {
+    border-radius: 12px;
+    transform: scale(0.5);
+    transition: all 0.4s;
+}
+.modalContent.active {
+    transform: scale(1);
+}

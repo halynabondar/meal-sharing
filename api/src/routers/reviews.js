@@ -17,9 +17,6 @@ reviewRouter.get("/", async (req, res, next) => {
 reviewRouter.post("/", async (req, res, next) => {
     try {
         const data = req.body;
-        if (isNaN(data)) {
-            return res.status(400).json({error: "Invalid data"});
-        }
         await knex("review").insert(data);
         res.status(201).json({message: "Review created successfully."});
     } catch (error) {

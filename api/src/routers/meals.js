@@ -10,6 +10,7 @@ mealsRouter.get('/', async (req, res, next) => {
 
         const {
             maxPrice,
+            minPrice,
             availableReservations,
             title,
             dateAfter,
@@ -21,23 +22,28 @@ mealsRouter.get('/', async (req, res, next) => {
 
         // Validation
         if (maxPrice && isNaN(parseFloat(maxPrice))) {
-            return res.status(400).json({ error: 'Invalid maxPrice: must be a valid number.' });
+            return res.status(400).json({error: 'Invalid maxPrice: must be a valid number.'});
         }
 
         if (limit && isNaN(parseInt(limit))) {
-            return res.status(400).json({ error: 'Invalid limit: must be an integer.' });
+            return res.status(400).json({error: 'Invalid limit: must be an integer.'});
         }
 
         if (dateAfter && isNaN(Date.parse(dateAfter))) {
-            return res.status(400).json({ error: 'Invalid dateAfter: must be a valid date.' });
+            return res.status(400).json({error: 'Invalid dateAfter: must be a valid date.'});
         }
 
         if (dateBefore && isNaN(Date.parse(dateBefore))) {
-            return res.status(400).json({ error: 'Invalid dateBefore: must be a valid date.' });
+            return res.status(400).json({error: 'Invalid dateBefore: must be a valid date.'});
         }
 
         if (sortDir && !['asc', 'desc'].includes(sortDir)) {
-            return res.status(400).json({ error: 'Invalid sortDir: must be either "asc" or "desc".' });
+            return res.status(400).json({error: 'Invalid sortDir: must be either "asc" or "desc".'});
+        }
+
+        // Filtering by maxPrice
+        if (minPrice) {
+            query = query.where('price', '>=', parseFloat(minPrice));
         }
 
         // Filtering by maxPrice
@@ -106,7 +112,12 @@ mealsRouter.post('/', async (req, res, next) => {
 mealsRouter.get('/:id', async (req, res) => {
     try {
         const meal = await knex('meal').where({id: req.params.id}).first();
+
+
         if (meal) {
+            const reservations = await knex('reservation').where("meal_id", req.params.id).count('id').first();
+            const availableReservations = meal['max_reservations'] - reservations['count(`id`)'];
+            meal['available_reservations'] = availableReservations;
             res.json(meal);
         } else {
             res.status(404).json({error: 'Meal not found'});
@@ -120,18 +131,18 @@ mealsRouter.get('/:id', async (req, res) => {
 mealsRouter.put('/:id', async (req, res) => {
     try {
         // Updating the meal and getting the count of updated rows
-        const updated = await knex('meal').where({ id: req.params.id }).update(req.body);
+        const updated = await knex('meal').where({id: req.params.id}).update(req.body);
 
         if (updated) {
             // If update was successful, return a success message
-            res.json({ message: 'Meal updated successfully' });
+            res.json({message: 'Meal updated successfully'});
         } else {
             // If no rows were updated, the meal doesn't exist
-            res.status(404).json({ error: 'Meal not found' });
+            res.status(404).json({error: 'Meal not found'});
         }
     } catch (error) {
         // Handling errors
-        res.status(500).json({ error: 'Failed to update meal' });
+        res.status(500).json({error: 'Failed to update meal'});
     }
 });
 
@@ -157,14 +168,14 @@ mealsRouter.get("/:meal_id/reviews", async (req, res, next) => {
 
         // Validate if id is a valid format (if needed)
         if (!id || isNaN(id)) {
-            return res.status(400).json({ error: "Invalid meal ID" });  // Bad Request
+            return res.status(400).json({error: "Invalid meal ID"});  // Bad Request
         }
 
         const mealReviews = await knex("review").where("meal_id", id);
 
         // If no reviews found, return 404
         if (mealReviews.length === 0) {
-            return res.status(404).json({ message: "Meal not found" });
+            return res.status(404).json({message: "Meal not found"});
         }
 
         // Return reviews with 200 status

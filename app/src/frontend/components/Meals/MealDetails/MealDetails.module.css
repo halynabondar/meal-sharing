@@ -1,0 +1,58 @@
+.mealContainer {
+    width: 800px;
+    margin: 0 auto;
+}
+.mealItem {
+    display: flex;
+}
+.mealInformation {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.mealTitle {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.mealImage img {
+    width: 400px;
+    height: 300px;
+    border-radius: 10px;
+    margin: 0 30px 20px 0;
+    object-fit: cover;
+}
+.mealDescription {
+    font-style: italic;
+    font-size: 16px;
+    line-height: 22px;
+}
+.mealRating {
+    color: #ffa600;
+    text-align: center;
+    font-size: 14px;
+    cursor: pointer;
+    margin: 10px;
+}
+.mealBtn {
+    font-weight: bold;
+    border: none;
+    background-color: #7ABA78;
+    padding: 7px 15px;
+    border-radius: 7px;
+    transition: all ease 0.5s;
+    margin: 10px;
+    font-size: 16px;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #0A6847;
+    }
+}
+.mealButtons {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+    align-items: center;
+}
