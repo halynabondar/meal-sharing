@@ -1,33 +1,61 @@
 "use client"
 
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import styles from './HomePage.module.css';
 import Navbar from "../Navbar.jsx";
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
+import Meal from "../Meals/Meal.jsx";
+import meal from "../Meals/Meal.jsx";
 
 function HomePage() {
+    const [meals, setMeals] = useState([]);
     const navigate = useNavigate();
+
+    const fetchData = async () => {
+        try {
+            const response = await fetch(`http://localhost:3007/api/meals${document.location.search}`);
+            const data = await response.json();
+            setMeals(data);
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+    useEffect(() => {
+        fetchData();
+    }, []);
+
+    const visibleMeals = meals.slice(0, 6);
 
     const handleButtonClick = () => {
         navigate('/meals');
     };
 
     const backgroundStyle = {
-        backgroundImage: 'url(/background_homepage.jpg)',
+        backgroundImage: 'url(/set-seafood.avif)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        height: '1000px',
-        width: '100%'
+        height: '600px',
     };
     return (
         <>
+            <Navbar/>
             <div style={backgroundStyle}>
-                <Navbar/>
                 <section className={styles.container}>
                     <h1 className={styles.title}>We are sharing food</h1>
-                    <button onClick={handleButtonClick} className={styles.btn}>Find a meal</button>
+                    <p className={styles.text}>Bringing people together, one meal at a time – share flavors, create
+                        memories, and feel the
+                        warmth of community.</p>
                 </section>
+            </div>
+            <div className={styles.mealsContainer}>
+                {visibleMeals.map((meal, index) => (
+                    <Meal key={index} meal={meal}/>
+                ))}
+            </div>
+            <div className={styles.btnContainer}>
+                <button onClick={handleButtonClick} className={styles.btn}>Find more meals</button>
             </div>
         </>
     );

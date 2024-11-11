@@ -10,41 +10,6 @@ function MealDetails({meal}) {
     const [modalReviewActive, setModalReviewActive] = useState(false);
     const [modalReserveActive, setModalReserveActive] = useState(false);
 
-//     const [showReviewForm, setShowReviewForm] = useState(false);
-//     const [showReservationForm, setShowReservationForm] = useState(false);
-//     const toggleReviewForm = () => setShowReviewForm(!showReviewForm);
-//     const toggleReservationForm = () => setShowReservationForm(!showReservationForm);
-//
-//     // Render rating
-//     function renderStarRating(film) {
-//         const filmRating = document.createElement('div');
-//         filmRating.classList.add('film-rating');
-//
-//         for (let i = 0; i < 5; i++) {
-//             const starIcon = document.createElement('i');
-//             starIcon.classList.add('fa-regular', 'fa-star');
-//             filmRating.appendChild(starIcon);
-//
-//             starIcon.addEventListener('click', () => {
-//                 film.rating = i + 1;
-//                 updateStars(filmRating, film.rating);
-//             });
-//         }
-//
-//         updateStars(filmRating, film.rating || 0);
-//
-//         return filmRating;
-//     }
-//
-// // Update star rating
-//     function updateStars(ratingContainer, rating) {
-//         const stars = ratingContainer.querySelectorAll('.film-rating i');
-//         stars.forEach((star, index) => {
-//             star.classList.toggle('fa-solid', index < rating);
-//             star.classList.toggle('fa-regular', index >= rating);
-//         });
-//     }
-
     const date = new Date(meal.when);
     const options = {
         hour: '2-digit',
@@ -63,9 +28,7 @@ function MealDetails({meal}) {
                 <div className={styles.mealItem}>
                     <div className={styles.mealColumn}>
                         <div className={styles.mealImage}>
-                            <img
-                                src={"https://www.allrecipes.com/thmb/EVkTRink6ZvQFts1yXOYTsqQDQw=/0x512/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/AR-269500-creamy-garlic-pasta-Beauties-4x3-f404628aad2a435a9985b2cf764209b5.jpg"}
-                                alt={"meal.title"}></img>
+                            <img src={meal.image_url} alt={meal.title}></img>
                         </div>
                     </div>
                     <div className={styles.mealColumn}>
@@ -77,16 +40,15 @@ function MealDetails({meal}) {
                         <div className={styles.mealInformation}>
                             <p className={styles.mealDescription}>{meal.description}</p>
                             <p className={styles.mealLocation}><b>Location:</b> {meal.location}</p>
-                            <p className={styles.mealDate}><b>When:</b> {swappedDateTime}</p>
+                            <p className={styles.mealDate}><b>Date:</b> {swappedDateTime}</p>
                             <p className={styles.mealReservations}><b>Available
-                                reservations:</b> {meal.max_reservations}</p>
+                                reservations:</b> {meal.available_reservations}</p>
                             <p className={styles.mealPrice}><b>Price:</b> {meal.price} kr</p>
                         </div>
                         <div className={styles.mealButtons}>
                             <button className={styles.mealBtn} onClick={() => setModalReviewActive(true)}>Review
                             </button>
-                            <button className={styles.mealBtn} onClick={() => setModalReserveActive(true)}>Reserve
-                            </button>
+                            {meal.available_reservations > 0 ? <button className={styles.mealBtn} onClick={() => setModalReserveActive(true)}>Reserve</button> : null }
                         </div>
                     </div>
                 </div>

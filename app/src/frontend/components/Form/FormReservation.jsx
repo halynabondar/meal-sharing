@@ -1,18 +1,19 @@
 "use client"
 
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import styles from "./Form.module.css";
 
 function FormReservation({modalActive}) {
     const path = document.location.pathname;
     const idMatch = path.match(/^\/meals\/([^\/]+)$/);
+    const mealId = idMatch[1];
 
     const [formData, setFormData] = useState({
         number_of_guests: '',
         contact_name: '',
         contact_email: '',
         contact_phonenumber: '',
-        meal_id: idMatch[1]
+        meal_id: mealId
     });
 
     // Handle input changes
@@ -27,24 +28,24 @@ function FormReservation({modalActive}) {
     // Handle form submission
     const handleReservationSubmit = (event) => {
         event.preventDefault();
+
         const fetchOptions = {
-            method: 'POST', // HTTP method
-            headers: {
-                'Content-Type': 'application/json', // Content-Type header
-            },
-            body: JSON.stringify(formData) // Stringify JSON object for the body
-        }
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify(formData)
+        };
 
         const fetchData = async () => {
             try {
                 const response = await fetch(`http://localhost:3007/api/reservations`, fetchOptions);
-                if (response.status === 200 || response.status === 201) {
+                if (response.ok) {
                     modalActive(false);
                 } else {
-                    alert(response.body.toString());
+                    alert(`Error: Unable to make reservation.`);
                 }
             } catch (error) {
-                console.log(error)
+                console.error("Error submitting reservation:", error);
+                alert("An unexpected error occurred. Please try again.");
             }
         }
         fetchData();
