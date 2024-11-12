@@ -52,13 +52,9 @@
         background-color: #0A6847;
     }
 }
-.mealRating {
-    color: #0A6847;
-    cursor: pointer;
-
-    &:hover {
-        color: #ffa600;
-    }
+.starRating {
+    display: flex;
+    justify-content: center;
 }
 .modal {
     height: 100vh;

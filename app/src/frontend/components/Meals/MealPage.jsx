@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 import Navbar from "../Navbar.jsx";
-import MealDetails from "./MealDetails/MealDetails.jsx";
+import MealDetails from "./[id]/MealDetails.jsx";
 import styles from "./MealPage.module.css";
 
 function MealPage() {
