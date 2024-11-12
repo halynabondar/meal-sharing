@@ -2,10 +2,10 @@
 
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import Navbar from "../Navbar.jsx";
-import MealDetails from "./[id]/MealDetails.jsx";
+import Navbar from "../../Navbar.jsx";
+import MealDetails from "../MealDetails.jsx";
 import styles from "./MealPage.module.css";
-import Footer from "../Footer/Footer.jsx";
+import Footer from "../../Footer/Footer.jsx";
 
 function MealPage() {
     const {id} = useParams();

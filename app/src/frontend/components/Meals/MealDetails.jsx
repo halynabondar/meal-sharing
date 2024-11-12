@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import styles from "./MealDetails.module.css";
-import FormReview from "../../Form/FormReview.jsx";
-import FormReservation from "../../Form/FormReservation.jsx";
-import Modal from "../../Form/Modal.jsx";
-import Star from "../../Star.jsx";
+import FormReview from "../Form/FormReview.jsx";
+import FormReservation from "../Form/FormReservation.jsx";
+import Modal from "../Form/Modal.jsx";
+import Star from "../Star.jsx";
 
 function MealDetails({meal}) {
     const [modalReviewActive, setModalReviewActive] = useState(false);

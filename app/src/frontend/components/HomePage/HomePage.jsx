@@ -36,7 +36,8 @@ function HomePage() {
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        height: '600px',
+        height: '700px',
+        paddingTop: '30px',
     };
     return (
         <>

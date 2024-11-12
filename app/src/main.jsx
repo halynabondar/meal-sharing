@@ -5,7 +5,7 @@ import HomePage from "./frontend/components/HomePage/HomePage.jsx";
 import "./main.css";
 import MealsList from "./frontend/components/Meals/MealsList.jsx";
 import AboutUs from "./frontend/components/AboutUs/AboutUs.jsx";
-import MealPage from "./frontend/components/Meals/MealPage.jsx";
+import MealPage from "./frontend/components/Meals/[id]/MealPage.jsx";
 
 const router = createBrowserRouter([
   {
