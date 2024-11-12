@@ -5,7 +5,7 @@ import styles from './HomePage.module.css';
 import Navbar from "../Navbar.jsx";
 import {useNavigate} from 'react-router-dom';
 import Meal from "../Meals/Meal.jsx";
-import meal from "../Meals/Meal.jsx";
+import Footer from "../Footer/Footer.jsx";
 
 function HomePage() {
     const [meals, setMeals] = useState([]);
@@ -57,6 +57,7 @@ function HomePage() {
             <div className={styles.btnContainer}>
                 <button onClick={handleButtonClick} className={styles.btn}>Find more meals</button>
             </div>
+            <Footer />
         </>
     );
 }

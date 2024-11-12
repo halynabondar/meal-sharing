@@ -5,6 +5,7 @@ import {useParams} from 'react-router-dom';
 import Navbar from "../Navbar.jsx";
 import MealDetails from "./[id]/MealDetails.jsx";
 import styles from "./MealPage.module.css";
+import Footer from "../Footer/Footer.jsx";
 
 function MealPage() {
     const {id} = useParams();
@@ -37,6 +38,7 @@ function MealPage() {
                     )}
                 </div>
             </div>
+            <Footer />
         </>
     );
 }

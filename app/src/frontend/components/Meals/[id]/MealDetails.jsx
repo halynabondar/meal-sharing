@@ -3,7 +3,6 @@ import styles from "./MealDetails.module.css";
 import FormReview from "../../Form/FormReview.jsx";
 import FormReservation from "../../Form/FormReservation.jsx";
 import Modal from "../../Form/Modal.jsx";
-import ReactStars from "react-rating-stars-component";
 import Star from "../../Star.jsx";
 
 function MealDetails({meal}) {
@@ -23,7 +22,7 @@ function MealDetails({meal}) {
     const formattedDate = date.toLocaleString('en-GB', options).replace(",", "").split(" ");
     const swappedDateTime = `${formattedDate[1]} ${formattedDate[0]}`;
 
-    // // Fetch average rating
+    // Fetch average rating
     useEffect(() => {
         const fetchAverageRating = async () => {
             try {
@@ -44,6 +43,7 @@ function MealDetails({meal}) {
     }, [meal.id]);
 
     // Refresh rating after a new review is submitted
+
     const handleReviewSubmit = async () => {
         try {
             const response = await fetch(`http://localhost:3007/api/reviews/${meal.id}/stars`);

@@ -5,6 +5,7 @@ import Navbar from "../Navbar.jsx";
 import Search from "../SearchBar.jsx";
 import SortBar from "../SortBar.jsx";
 import FilterBar from "../FilterBar.jsx";
+import Footer from "../Footer/Footer.jsx";
 
 function MealsList() {
     const [meals, setMeals] = useState([]);
@@ -44,6 +45,7 @@ function MealsList() {
                     </div>
                 </div>
             </section>
+            <Footer />
         </>
     )
 }
