@@ -87,7 +87,7 @@ function FormReview({modalActive}) {
                         value={formData.stars}
                         onChange={ratingChangeHandler}
                         size={18}
-                        activeColor="#ffd700"
+                        activeColor="#ffa600"
                     />
                 </div>
                 <button className={styles.formBtn}>Add review</button>
