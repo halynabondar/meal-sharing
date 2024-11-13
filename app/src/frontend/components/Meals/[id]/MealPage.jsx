@@ -6,6 +6,7 @@ import Navbar from "../../Navbar.jsx";
 import MealDetails from "../MealDetails.jsx";
 import styles from "./MealPage.module.css";
 import Footer from "../../Footer/Footer.jsx";
+import Reviews from "../../Reviews.jsx";
 
 function MealPage() {
     const {id} = useParams();
@@ -37,7 +38,9 @@ function MealPage() {
                         <p>Loading meals...</p>
                     )}
                 </div>
+                <Reviews />
             </div>
+
             <Footer />
         </>
     );

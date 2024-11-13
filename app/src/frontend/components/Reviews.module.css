@@ -1,0 +1,30 @@
+.reviewContainer {
+    width: 800px;
+    margin: 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3rem;
+    justify-content: center;
+}
+.reviewItem {
+    width: 350px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+}
+.reviewTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.starRating {}
+.date {
+    font-size: 14px;
+}
+.title {
+    margin: 10px 0;
+}
+.description {
+    font-style: italic;
+}

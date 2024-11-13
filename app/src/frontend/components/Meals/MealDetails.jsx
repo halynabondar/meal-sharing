@@ -64,7 +64,7 @@ function MealDetails({meal}) {
                 filled={index < filledStars}
                 color="#ffa600"
                 emptyColor="#ccc"
-                size={20}
+                size={16}
             />
         ));
     };
