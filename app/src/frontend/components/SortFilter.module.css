@@ -4,9 +4,9 @@
 }
 
 .legend {
-    color: #0A6847;
+    color: white;
     border-radius: 12px;
-    background-color: #F6E9B2;
+    background-color: #3B1C32;
     padding: 8px 15px;
     width: 230px;
     margin: 10px 0;
@@ -47,8 +47,8 @@
 }
 
 .input:checked + label::before {
-    background-color: #7ABA78;
-    border-color: #7ABA78;
+    background-color: #A64D79;
+    border-color: #A64D79;
 }
 
 .input:checked + label::after {

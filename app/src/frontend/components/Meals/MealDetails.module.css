@@ -41,7 +41,7 @@
 .mealBtn {
     font-weight: bold;
     border: none;
-    background-color: #7ABA78;
+    background-color: #A64D79;
     padding: 7px 15px;
     border-radius: 7px;
     transition: all ease 0.5s;
@@ -52,7 +52,7 @@
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #0A6847;
+        background-color: #6A1E55;
     }
 }
 .mealButtons {

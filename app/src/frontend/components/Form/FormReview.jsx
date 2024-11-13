@@ -9,7 +9,7 @@ function FormReview({modalActive}) {
     const [formData, setFormData] = useState({
         title: '',
         description: '',
-        stars: '',
+        stars: 0,
         meal_id: idMatch ? idMatch[1] : null
     });
 

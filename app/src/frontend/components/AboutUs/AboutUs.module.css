@@ -12,7 +12,7 @@
 .title {
     margin: 30px 0 20px;
     font-size: 3rem;
-    color: #F3CA52;
+    color: #A64D79;
 }
 .text {
     font-size: 20px;
@@ -22,10 +22,10 @@
     align-self: start;
 }
 .btn {
-    background-color: #F6E9B2;
+    background-color: #A64D79;
     border-radius: 10px;
     padding: 10px 16px;
-    color: #0A6847;
+    color: white;
     cursor: pointer;
     transition: all ease 0.3s;
     font-size: 18px;
@@ -33,7 +33,7 @@
     align-self: start;
 
     &:hover {
-        background-color: #7ABA78;
+        background-color: #6A1E55;
         color: white;
     }
 }

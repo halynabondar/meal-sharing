@@ -40,7 +40,6 @@ function MealPage() {
                 </div>
                 <Reviews />
             </div>
-
             <Footer />
         </>
     );

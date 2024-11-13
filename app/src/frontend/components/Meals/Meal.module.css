@@ -14,14 +14,16 @@ a {
     border-radius: 15px;
     box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
+    border: 1px solid lightgray;
 
     &:hover {
-        border: 1px solid #7ABA78;
+        border: 1px solid #A64D79;
     }
 }
 .mealTitle {
     margin: 10px;
     text-align: center;
+    color: #3B1C32;
 }
 .mealImage img {
     width: 280px;
@@ -36,7 +38,8 @@ a {
 .mealBtn {
     font-weight: bold;
     border: none;
-    background-color: #7ABA78;
+    background-color: #A64D79;
+    color: white;
     padding: 5px 15px;
     border-radius: 7px;
     transition: 0.3s;
@@ -45,7 +48,7 @@ a {
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #0A6847;
+        background-color: #6A1E55;
     }
 }
 .mealItemBottom {

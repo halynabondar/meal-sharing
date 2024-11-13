@@ -9,10 +9,10 @@
     cursor: pointer;
     padding: 10px 30px;
     border-radius: 12px;
-    background-color: #F6E9B2;
+    background-color: #3B1C32;
     transition: all 0.5s;
     font-size: 16px;
-    color: #0A6847;
+    color: white;
 
     &:hover {
         cursor: pointer;
