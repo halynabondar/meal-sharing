@@ -3,7 +3,6 @@ import React, {useEffect, useState} from "react";
 import Review from "./Review.jsx";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
-// import 'swiper/css/grid';
 import 'swiper/css/pagination';
 import {Grid, Pagination} from 'swiper/modules';
 
@@ -26,27 +25,25 @@ export default function Reviews() {
 
     return (
         <>
-            <div className={styles.slideContainer}>
-                {reviews.length > 0 ? (
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={30}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        modules={[Grid, Pagination]}
-                        className={styles.mySwiper}
-                    >
-                        {reviews.map((review, id) => (
-                            <SwiperSlide key={id} className={styles.customSlide}>
-                                <Review review={review}/>
-                            </SwiperSlide>
-                        ))}
-                    </Swiper>
-                ) : (
-                    <p>Loading reviews...</p>
-                )}
-            </div>
+            {reviews.length > 0 ? (
+                <Swiper
+                    slidesPerView={3}
+                    spaceBetween={30}
+                    pagination={{
+                        clickable: true,
+                    }}
+                    modules={[Grid, Pagination]}
+                    className={styles.mySwiper}
+                >
+                    {reviews.map((review, id) => (
+                        <SwiperSlide key={id}>
+                            <Review review={review}/>
+                        </SwiperSlide>
+                    ))}
+                </Swiper>
+            ) : (
+                <p>Loading reviews...</p>
+            )}
         </>
     );
 }
