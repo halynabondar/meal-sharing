@@ -1,34 +1,52 @@
 import styles from "./Reviews.module.css";
 import React, {useEffect, useState} from "react";
 import Review from "./Review.jsx";
+import {Swiper, SwiperSlide} from 'swiper/react';
+import 'swiper/css';
+// import 'swiper/css/grid';
+import 'swiper/css/pagination';
+import {Grid, Pagination} from 'swiper/modules';
 
 export default function Reviews() {
-
     const [reviews, setReviews] = useState([]);
+
     const fetchData = async () => {
         try {
             const response = await fetch(`http://localhost:3007/api/reviews`);
             const data = await response.json();
             setReviews(data);
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
-    }
+    };
 
     useEffect(() => {
         fetchData();
     }, []);
+
     return (
         <>
-            <div className={styles.reviewContainer}>
+            <div className={styles.slideContainer}>
                 {reviews.length > 0 ? (
-                    reviews.map((review, id) => (
-                        <Review key={id} review={review}/>
-                    ))
+                    <Swiper
+                        slidesPerView={3}
+                        spaceBetween={30}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        modules={[Grid, Pagination]}
+                        className={styles.mySwiper}
+                    >
+                        {reviews.map((review, id) => (
+                            <SwiperSlide key={id} className={styles.customSlide}>
+                                <Review review={review}/>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
                 ) : (
                     <p>Loading reviews...</p>
                 )}
             </div>
         </>
-    )
+    );
 }
