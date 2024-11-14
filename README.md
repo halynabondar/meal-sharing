@@ -26,6 +26,7 @@ The main functionalities of this website are:
 -   MySQL
 -   React
 -   CSS Modules
+-   Swiper.js
 
 ## What I Learned
 
