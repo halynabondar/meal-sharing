@@ -1,7 +1,8 @@
 .formContainer {
-    background: #7ABA78;
+    background: #A64D79;
     width: 400px;
     border-radius: 15px;
+    color: white;
     margin: 0 auto;
     padding: 20px;
     box-shadow: 1px 1px 15px 1px rgba(255, 255, 255, 0.3);
@@ -42,23 +43,19 @@
     color: black;
     border: none;
     border-radius: 10px;
-    transition: all ease 0.5s;
+    transition: all ease 0.4s;
     width: 40%;
     font-weight: bold;
 
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #0A6847;
+        background-color: #6A1E55;
     }
 }
-.mealRating {
-    color: #0A6847;
-    cursor: pointer;
-
-    &:hover {
-        color: #ffa600;
-    }
+.starRating {
+    display: flex;
+    justify-content: center;
 }
 .modal {
     height: 100vh;
@@ -77,6 +74,7 @@
 .modal.active {
     opacity: 1;
     pointer-events: all;
+    z-index: 1000;
 }
 .modalContent {
     border-radius: 12px;

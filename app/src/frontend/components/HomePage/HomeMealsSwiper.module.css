@@ -1,0 +1,29 @@
+.swiperContainer {
+    margin: 50px 0;
+}
+.swiperItem {
+    width: 1200px;
+    margin: 0 auto;
+}
+.btnContainer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.btn {
+    font-weight: bold;
+    border: none;
+    background-color: #A64D79;
+    padding: 12px 25px;
+    border-radius: 10px;
+    transition: all ease 0.5s;
+    margin-top: 30px;
+    font-size: 16px;
+    color: white;
+
+    &:hover {
+        cursor: pointer;
+        color: white;
+        background-color: #6A1E55;
+    }
+}

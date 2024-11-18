@@ -1,22 +1,21 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from './SearchBar.module.css';
 
-function clearInput() {
-    document.getElementById("searchInput").value = "";
-    document.getElementById("searchInput").focus();
-}
+function SearchBar({ onSearch }) {
+    const [query, setQuery] = useState("");
 
-function Search() {
+    const handleChange = (e) => {
+        setQuery(e.target.value);
+        onSearch(e.target.value);
+    }
     return (
         <>
             <form className={styles.searchForm}>
-                <span className={styles.iconSearch}>🔍</span>
-                <input className={styles.searchInput} type="text" id="input" name="search" />
-                <span className={styles.iconClear} onClick={clearInput}>✖️</span>
+                <input className={styles.searchInput} value={query} onChange={handleChange} type="text" id="input" name="search" />
                 <button className={styles.searchBtn}>Search</button>
             </form>
         </>
     )
 }
 
-export default Search;
+export default SearchBar;

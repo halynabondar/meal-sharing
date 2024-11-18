@@ -1,0 +1,31 @@
+.swiperContainer {}
+.swiperItem {}
+.mySwiper {
+    width: 1100px;
+    height: 200px;
+    margin: 30px auto;
+}
+.reviewItem {
+    background-color: white;
+    width: 360px;
+    height: auto;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    border: 1px solid lightgray;
+}
+.reviewTop {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+.starRating {}
+.date {
+    font-size: 14px;
+}
+.title {
+    margin: 10px 0;
+}
+.description {
+    font-style: italic;
+}

@@ -1,0 +1,41 @@
+.footer {
+    width: 1200px;
+    margin: 0 auto;
+    border-top: #3B1C32 solid 1px;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+}
+
+.list {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    justify-content: center;
+    list-style: none;
+    margin: 15px;
+}
+.list li {
+    cursor: pointer;
+}
+.footerColumn {
+    display: flex;
+    justify-content: space-between;
+}
+.logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+.logoItem img {
+    width: 40px;
+    object-fit: cover;
+    height: 35px;
+    border-radius: 20%;
+}
+.text {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 14px;
+}

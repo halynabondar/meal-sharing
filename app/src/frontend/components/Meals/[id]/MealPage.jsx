@@ -2,9 +2,11 @@
 
 import React, {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
-import Navbar from "../Navbar.jsx";
-import MealDetails from "./MealDetails/MealDetails.jsx";
+import Navbar from "../../Navbar.jsx";
+import MealDetails from "../MealDetails.jsx";
 import styles from "./MealPage.module.css";
+import Footer from "../../Footer/Footer.jsx";
+import Reviews from "../../Reviews.jsx";
 
 function MealPage() {
     const {id} = useParams();
@@ -36,7 +38,9 @@ function MealPage() {
                         <p>Loading meals...</p>
                     )}
                 </div>
+                <Reviews />
             </div>
+            <Footer />
         </>
     );
 }

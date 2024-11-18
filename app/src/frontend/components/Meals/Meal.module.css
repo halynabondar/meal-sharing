@@ -11,41 +11,56 @@ a {
 }
 /* ------------------------------------------------ */
 .mealItem {
+    background-size: cover;
+    background-position: center;
+    width: 250px;
+    height: 300px;
+    object-fit: cover;
     border-radius: 15px;
-    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.3);
     transition: all 0.3s;
-
-    &:hover {
-        border: 1px solid #7ABA78;
-    }
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 6px 15px 0 rgba(0, 0, 0, 0.19);
+}
+.mealPrice {
+    text-align: end;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
+}
+.mealPrice {
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
 }
 .mealTitle {
-    margin: 10px;
-    text-align: center;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+    margin-top: 170px;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.7);
 }
-.mealImage img {
-    width: 280px;
-    height: 200px;
-    object-fit: cover;
+.mealStars {
+    margin-top: 5px;
 }
-.mealDescription {
-    font-style: italic;
-    font-size: 16px;
-    line-height: 22px;
+.span {
+    color: #FEA601;
+    font-weight: bold;
 }
 .mealBtn {
     font-weight: bold;
     border: none;
-    background-color: #7ABA78;
+    background-color: #A64D79;
+    color: white;
     padding: 5px 15px;
     border-radius: 7px;
     transition: 0.3s;
-    margin: 0 10px 10px 10px;
 
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #0A6847;
+        background-color: #6A1E55;
     }
 }
 .mealItemBottom {

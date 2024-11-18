@@ -4,6 +4,7 @@ import React from 'react';
 import Navbar from "../Navbar.jsx";
 import styles from "./AboutUs.module.css";
 import {useNavigate} from "react-router-dom";
+import Footer from "../Footer/Footer.jsx";
 
 export default function AboutUs() {
     const navigate = useNavigate();
@@ -37,6 +38,7 @@ export default function AboutUs() {
                     <button className={styles.btn} onClick={handleFindMeal}>Find a meal</button>
                 </section>
             </div>
+            <Footer />
         </>
     )
 }

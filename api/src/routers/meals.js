@@ -7,93 +7,40 @@ const mealsRouter = express.Router();
 mealsRouter.get('/', async (req, res, next) => {
     try {
         let query = knex('meal');
-
         const {
-            maxPrice,
-            minPrice,
-            availableReservations,
-            title,
-            dateAfter,
-            dateBefore,
-            limit,
-            sortKey,
-            sortDir
+            maxPrice, minPrice, availableReservations,
+            title, dateAfter, dateBefore, limit, sortKey, sortDir
         } = req.query;
 
-        // Validation
-        if (maxPrice && isNaN(parseFloat(maxPrice))) {
-            return res.status(400).json({error: 'Invalid maxPrice: must be a valid number.'});
-        }
+        // Validations
+        if (maxPrice && isNaN(parseFloat(maxPrice))) return res.status(400).json({ error: 'Invalid maxPrice' });
+        if (limit && isNaN(parseInt(limit))) return res.status(400).json({ error: 'Invalid limit' });
+        if (dateAfter && isNaN(Date.parse(dateAfter))) return res.status(400).json({ error: 'Invalid dateAfter' });
+        if (dateBefore && isNaN(Date.parse(dateBefore))) return res.status(400).json({ error: 'Invalid dateBefore' });
+        if (sortDir && !['asc', 'desc'].includes(sortDir)) return res.status(400).json({ error: 'Invalid sortDir' });
 
-        if (limit && isNaN(parseInt(limit))) {
-            return res.status(400).json({error: 'Invalid limit: must be an integer.'});
-        }
-
-        if (dateAfter && isNaN(Date.parse(dateAfter))) {
-            return res.status(400).json({error: 'Invalid dateAfter: must be a valid date.'});
-        }
-
-        if (dateBefore && isNaN(Date.parse(dateBefore))) {
-            return res.status(400).json({error: 'Invalid dateBefore: must be a valid date.'});
-        }
-
-        if (sortDir && !['asc', 'desc'].includes(sortDir)) {
-            return res.status(400).json({error: 'Invalid sortDir: must be either "asc" or "desc".'});
-        }
-
-        // Filtering by maxPrice
-        if (minPrice) {
-            query = query.where('price', '>=', parseFloat(minPrice));
-        }
-
-        // Filtering by maxPrice
-        if (maxPrice) {
-            query = query.where('price', '<=', parseFloat(maxPrice));
-        }
-
-        // Filtering by availability
-        if (availableReservations !== undefined) {
-            const hasAvailableSpots = availableReservations === "true";
-            query
-                .leftJoin("reservation", "meal.id", "reservation.meal_id")
+        // Filters
+        if (minPrice) query.where('price', '>=', parseFloat(minPrice));
+        if (maxPrice) query.where('price', '<=', parseFloat(maxPrice));
+        if (availableReservations) {
+            const hasSpots = availableReservations === "true";
+            query.leftJoin("reservation", "meal.id", "reservation.meal_id")
                 .select("meal.*")
-                .groupBy("meal.id");
-            if (hasAvailableSpots) {
-                query.havingRaw("COUNT(reservation.id) < meal.max_reservations");
-            } else {
-                query.havingRaw("COUNT(reservation.id) >= meal.max_reservations");
-            }
+                .groupBy("meal.id")
+                .havingRaw(hasSpots ? "COUNT(reservation.id) < meal.max_reservations" : "COUNT(reservation.id) >= meal.max_reservations");
         }
+        if (title) query.where('title', 'like', `%${title}%`);
+        if (dateAfter) query.where('date', '>=', dateAfter);
+        if (dateBefore) query.where('date', '<=', dateBefore);
 
-        // Filtering by title
-        if (title) {
-            query = query.where('title', 'like', `%${title}%`);
-        }
-
-        // Filtering by dateAfter and dateBefore
-        if (dateAfter) {
-            query = query.where('date', '>=', dateAfter);
-        }
-        if (dateBefore) {
-            query = query.where('date', '<=', dateBefore);
-        }
-
-        // Sorting
-        if (sortKey) {
-            query = query.orderBy(sortKey, sortDir || 'asc');
-        }
-
-        // Limiting the results
-        if (limit) {
-            query = query.limit(parseInt(limit));
-        }
+        // Sorting and limiting results
+        if (sortKey) query.orderBy(sortKey, sortDir || 'asc');
+        if (limit) query.limit(Math.min(parseInt(limit), 100)); // set an upper limit
 
         const meals = await query;
         res.json(meals);
-        next();
     } catch (error) {
-        console.log(error);
-        res.status(500).json({error: 'Failed to fetch meals'});
+        next(error);
     }
 });
 
@@ -175,7 +122,7 @@ mealsRouter.get("/:meal_id/reviews", async (req, res, next) => {
 
         // If no reviews found, return 404
         if (mealReviews.length === 0) {
-            return res.status(404).json({message: "Meal not found"});
+            return res.status(404).json({message: "No reviews found for this meal"});
         }
 
         // Return reviews with 200 status
@@ -188,6 +135,28 @@ mealsRouter.get("/:meal_id/reviews", async (req, res, next) => {
         // Forward error to an error handling middleware
         next(error);
     }
+});
+
+// Updated searchMeals function and search route
+const searchMeals = async (name) => {
+    return knex("meal").where("name", "like", `%${name}%`);
+};
+
+mealsRouter.get("/search", async (req, res, next) => {
+    const { title } = req.query;
+    if (!title) return res.status(400).json({ error: "Name parameter is required" });
+
+    try {
+        const results = await searchMeals(title);
+        res.json(results);
+    } catch (error) {
+        next(error);
+    }
+});
+
+mealsRouter.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: "Something went wrong" });
 });
 
 export default mealsRouter;

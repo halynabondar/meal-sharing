@@ -1,10 +1,8 @@
 import React, {useEffect, useState} from 'react';
-import styles from './Meal.module.css';
-import {useNavigate} from 'react-router-dom';
+import styles from './HomeMeal.module.css';
 import Star from "../Star.jsx";
 
-function Meal({meal}) {
-    const navigate = useNavigate();
+function HomeMeal({meal}) {
     const [averageRating, setAverageRating] = useState(meal.stars || 0);
 
     // Fetch average rating
@@ -42,24 +40,19 @@ function Meal({meal}) {
         ));
     };
 
-    const handleMoreInfoClick = () => {
-        navigate(`/meals/${meal.id}`);
-    };
-
     return (
-        <div className={styles.mealItem} style={{
-            backgroundImage: `url(${meal.image_url})`
-        }}>
-            <div className={styles.mealPrice}>{meal.price} kr.</div>
-            <div className={styles.mealTitle}>{meal.title}</div>
-            <div className={styles.mealStars}>
-                <span className={styles.span}>{averageRating.toFixed(1)}</span> {renderStars()}
+        <>
+            <div className={styles.mealContainer} style={{
+                backgroundImage: `url(${meal.image_url})`
+            }}>
+                <div className={styles.mealPrice}>{meal.price} kr.</div>
+                <div className={styles.mealTitle}>{meal.title}</div>
+                <div className={styles.mealStars}>
+                    <span className={styles.span}>{averageRating.toFixed(1)}</span> {renderStars()}
+                </div>
             </div>
-            <div className={styles.mealItemBottom}>
-                <button onClick={handleMoreInfoClick} className={styles.mealBtn}>More info</button>
-            </div>
-        </div>
+        </>
     );
 }
 
-export default Meal;
+export default HomeMeal;

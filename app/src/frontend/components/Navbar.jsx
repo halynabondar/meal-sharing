@@ -34,7 +34,7 @@ const Navbar = () => {
     );
 
     return (
-        <AppBar position="static" sx={{backgroundColor: '#0A6847'}}>
+        <AppBar position="fixed" sx={{backgroundColor: '#6A1E55', color: 'white'}}>
             <Toolbar>
                 <Typography variant="h6" sx={{flexGrow: 1, fontFamily: "Great Vibes", fontSize: 32}}>
                     Meal Sharing
