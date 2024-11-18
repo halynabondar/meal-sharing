@@ -22,10 +22,11 @@ The main functionalities of this website are:
 ## Technologies Used
 
 -   Express.js
--   KnexJS
+-   Knex.js
 -   MySQL
 -   React
--   CSS Modules
+-   Node.js
+-   CSS
 -   Swiper.js
 
 ## What I Learned
