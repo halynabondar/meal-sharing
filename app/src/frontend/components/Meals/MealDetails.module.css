@@ -5,11 +5,12 @@
 .mealItem {
     display: flex;
     align-items: center;
+    gap: 20px;
 }
 .mealInformation {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 15px;
 }
 .mealTitle {
     margin-bottom: 10px;

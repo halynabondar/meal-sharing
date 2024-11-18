@@ -40,8 +40,8 @@ export default function HomeMealsSwiper() {
                         <Swiper
                             effect={'coverflow'}
                             grabCursor={true}
-                            centeredSlides={true}
-                            slidesPerView={'3'}
+                            centeredSlides={false}
+                            slidesPerView={3}
                             navigation={true}
                             coverflowEffect={{
                                 rotate: 15,

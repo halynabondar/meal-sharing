@@ -74,6 +74,7 @@
 .modal.active {
     opacity: 1;
     pointer-events: all;
+    z-index: 1000;
 }
 .modalContent {
     border-radius: 12px;

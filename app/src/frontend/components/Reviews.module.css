@@ -1,14 +1,13 @@
+.swiperContainer {}
+.swiperItem {}
 .mySwiper {
-    width: 1030px;
+    width: 1100px;
     height: 200px;
-    margin: 50px auto;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /*gap: 3rem;*/
+    margin: 30px auto;
 }
 .reviewItem {
-    width: 350px;
+    background-color: white;
+    width: 360px;
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;

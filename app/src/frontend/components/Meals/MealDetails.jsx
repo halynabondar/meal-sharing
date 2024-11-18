@@ -43,7 +43,6 @@ function MealDetails({meal}) {
     }, [meal.id]);
 
     // Refresh rating after a new review is submitted
-
     const handleReviewSubmit = async () => {
         try {
             const response = await fetch(`http://localhost:3007/api/reviews/${meal.id}/stars`);

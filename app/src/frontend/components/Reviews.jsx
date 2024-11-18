@@ -4,7 +4,8 @@ import Review from "./Review.jsx";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import {Grid, Pagination} from 'swiper/modules';
+// import 'swiper/css/navigation';
+import {Grid, Navigation, Pagination} from 'swiper/modules';
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([]);
@@ -25,25 +26,31 @@ export default function Reviews() {
 
     return (
         <>
-            {reviews.length > 0 ? (
-                <Swiper
-                    slidesPerView={3}
-                    spaceBetween={30}
-                    pagination={{
-                        clickable: true,
-                    }}
-                    modules={[Grid, Pagination]}
-                    className={styles.mySwiper}
-                >
-                    {reviews.map((review, id) => (
-                        <SwiperSlide key={id}>
-                            <Review review={review}/>
-                        </SwiperSlide>
-                    ))}
-                </Swiper>
-            ) : (
-                <p>Loading reviews...</p>
-            )}
+            <div className={styles.swiperContainer}>
+                <div className={styles.swiperItem}>
+                    {reviews.length > 0 ? (
+                        <Swiper
+                            slidesPerView={3}
+                            spaceBetween={10}
+                            centeredSlides={true}
+                            // navigation={true}
+                            pagination={{
+                                clickable: true,
+                            }}
+                            modules={[Grid, Pagination]}
+                            className={styles.mySwiper}
+                        >
+                            {reviews.map((review, id) => (
+                                <SwiperSlide key={id}>
+                                    <Review review={review}/>
+                                </SwiperSlide>
+                            ))}
+                        </Swiper>
+                    ) : (
+                        <p>Loading reviews...</p>
+                    )}
+                </div>
+            </div>
         </>
     );
 }
