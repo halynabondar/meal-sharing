@@ -4,8 +4,7 @@ import Review from "./Review.jsx";
 import {Swiper, SwiperSlide} from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-// import 'swiper/css/navigation';
-import {Grid, Navigation, Pagination} from 'swiper/modules';
+import {Grid, Pagination} from 'swiper/modules';
 
 export default function Reviews() {
     const [reviews, setReviews] = useState([]);
@@ -32,8 +31,7 @@ export default function Reviews() {
                         <Swiper
                             slidesPerView={3}
                             spaceBetween={10}
-                            centeredSlides={true}
-                            // navigation={true}
+                            centeredSlides={false}
                             pagination={{
                                 clickable: true,
                             }}
