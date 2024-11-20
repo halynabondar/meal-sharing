@@ -5,17 +5,38 @@
     display: flex;
     gap: 4rem;
 }
+
 .mealsContainer {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     gap: 3rem;
+    margin-bottom: 50px;
 }
+
 .mealsListTitle {
     text-align: center;
     margin: 20px;
 }
+
 .aside {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+}
+.column {
+}
+.showMoreBtn {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 30px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 13px;
+    background-color: #6A1E55;
+    color: white;
+    transition: background-color 0.3s;
+
+    &:hover {
+        background-color: #A64D79;
+    }
 }

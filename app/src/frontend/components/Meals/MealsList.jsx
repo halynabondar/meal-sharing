@@ -9,6 +9,11 @@ import SearchContainer from "../SearchContainer.jsx";
 
 function MealsList() {
     const [meals, setMeals] = useState([]);
+    const [visibleCount, setVisibleCount] = useState(9);
+
+    const showMoreDishes = () => {
+        setVisibleCount((prev) => prev + 9);
+    };
 
     const fetchData = async () => {
         try {
@@ -26,16 +31,16 @@ function MealsList() {
 
     return (
         <>
-            <Navbar />
-            <SearchContainer />
+            <Navbar/>
+            <SearchContainer/>
             <section className={styles.container}>
                 <div className={styles.aside}>
-                    <SortBar />
-                    <FilterBar />
+                    <SortBar/>
+                    <FilterBar/>
                 </div>
-                <div>
+                <div className={styles.column}>
                     <div className={styles.mealsContainer}>
-                        {meals.length > 0 ? (
+                        {meals.slice(0, visibleCount).length > 0 ? (
                             meals.map((meal, index) => (
                                 <Meal key={index} meal={meal}/>
                             ))
@@ -43,9 +48,14 @@ function MealsList() {
                             <p>Loading meals...</p>
                         )}
                     </div>
+                    <div>
+                        {visibleCount < meals.length && (
+                            <button onClick={showMoreDishes} className={styles.showMoreBtn}>Show More</button>
+                        )}
+                    </div>
                 </div>
             </section>
-            <Footer />
+            <Footer/>
         </>
     )
 }
