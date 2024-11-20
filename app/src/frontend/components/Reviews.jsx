@@ -31,6 +31,7 @@ export default function Reviews() {
                         <Swiper
                             slidesPerView={3}
                             spaceBetween={10}
+                            grabCursor={true}
                             centeredSlides={false}
                             pagination={{
                                 clickable: true,
