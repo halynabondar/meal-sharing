@@ -1,5 +1,5 @@
 import Meal from "./Meal.jsx";
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from "react";
 import styles from "./MealList.module.css";
 import Navbar from "../Navbar.jsx";
 import SortBar from "../SortBar.jsx";
@@ -10,54 +10,67 @@ import SearchContainer from "../SearchContainer.jsx";
 function MealsList() {
     const [meals, setMeals] = useState([]);
     const [visibleCount, setVisibleCount] = useState(9);
+    const [isLoading, setIsLoading] = useState(true);
+    const [error, setError] = useState(null);
 
-    const showMoreDishes = () => {
+    const showMoreMeals = () => {
         setVisibleCount((prev) => prev + 9);
     };
 
     const fetchData = async () => {
         try {
-            const response = await fetch(`http://localhost:3007/api/meals${document.location.search}`);
+            const searchParams = new URLSearchParams(document.location.search);
+            const query = searchParams.toString();
+            const response = await fetch(`http://localhost:3007/api/meals?${query}`);
+            if (!response.ok) throw new Error("Failed to fetch meals");
             const data = await response.json();
             setMeals(data);
         } catch (error) {
-            console.log(error)
+            setError(error.message);
+        } finally {
+            setIsLoading(false);
         }
-    }
+    };
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [fetchData]);
 
     return (
         <>
-            <Navbar/>
-            <SearchContainer/>
+            <Navbar />
+            <SearchContainer />
             <section className={styles.container}>
                 <div className={styles.aside}>
-                    <SortBar/>
-                    <FilterBar/>
+                    <SortBar />
+                    <FilterBar />
                 </div>
                 <div className={styles.column}>
                     <div className={styles.mealsContainer}>
-                        {meals.slice(0, visibleCount).length > 0 ? (
-                            meals.map((meal, index) => (
-                                <Meal key={index} meal={meal}/>
+                        {isLoading ? (
+                            <p>Loading meals...</p>
+                        ) : error ? (
+                            <p className={styles.error}>{error}</p>
+                        ) : meals.length > 0 ? (
+                            meals.slice(0, visibleCount).map((meal) => (
+                                <Meal key={meal.id} meal={meal} />
                             ))
                         ) : (
-                            <p>Loading meals...</p>
+                            <p>No meals available.</p>
                         )}
                     </div>
                     <div>
                         {visibleCount < meals.length && (
-                            <button onClick={showMoreDishes} className={styles.showMoreBtn}>Show More</button>
+                            <button onClick={showMoreMeals} className={styles.showMoreBtn} aria-label="Show more meals">
+                                Show More
+                            </button>
                         )}
                     </div>
                 </div>
             </section>
-            <Footer/>
+            <Footer />
         </>
-    )
+    );
 }
 
 export default MealsList;
