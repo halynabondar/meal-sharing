@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './SortFilter.module.css';
+// import {useSearch} from "./SearchContext.jsx";
 
 function SortBar() {
     return (

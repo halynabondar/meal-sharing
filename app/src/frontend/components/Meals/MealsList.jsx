@@ -2,10 +2,10 @@ import Meal from "./Meal.jsx";
 import React, { useEffect, useState } from "react";
 import styles from "./MealList.module.css";
 import Navbar from "../Navbar.jsx";
-import SortBar from "../SortBar.jsx";
-import FilterBar from "../FilterBar.jsx";
+import SortBar from "../SearchSortFilter/SortBar.jsx";
 import Footer from "../Footer/Footer.jsx";
-import SearchContainer from "../SearchContainer.jsx";
+import SearchPage from "../SearchSortFilter/SearchPage.jsx";
+import Results from "../SearchSortFilter/Results.jsx";
 
 function MealsList() {
     const [meals, setMeals] = useState([]);
@@ -39,11 +39,12 @@ function MealsList() {
     return (
         <>
             <Navbar />
-            <SearchContainer />
+            <SearchPage />
+            <SortBar />
+            <Results />
             <section className={styles.container}>
                 <div className={styles.aside}>
-                    <SortBar />
-                    <FilterBar />
+
                 </div>
                 <div className={styles.column}>
                     <div className={styles.mealsContainer}>
