@@ -13,7 +13,7 @@
 .btn {
     font-weight: bold;
     border: none;
-    background-color: #A64D79;
+    background-color: var(--main-color);
     padding: 12px 25px;
     border-radius: 10px;
     transition: all ease 0.5s;
@@ -24,6 +24,6 @@
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #6A1E55;
+        background-color: var(--secondary-color);
     }
 }

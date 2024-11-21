@@ -9,7 +9,7 @@
     cursor: pointer;
     padding: 10px 30px;
     border-radius: 12px;
-    background-color: #3B1C32;
+    background-color: var(--main-color);
     transition: all 0.5s;
     font-size: 16px;
     color: white;
@@ -17,7 +17,7 @@
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #0A6847;
+        background-color:  var(--secondary-color);
     }
 }
 .searchInput {

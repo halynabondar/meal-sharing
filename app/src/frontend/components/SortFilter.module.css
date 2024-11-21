@@ -42,8 +42,8 @@
 }
 
 .input:checked + label::before {
-    background-color: #A64D79;
-    border-color: #A64D79;
+    background-color: green;
+    border-color: green;
 }
 
 .input:checked + label::after {
@@ -61,7 +61,7 @@
 }
 
 .btn {
-    background-color: #A64D79;
+    background-color: var(--main-color);
     color: white;
     border: none;
     padding: 8px 20px;
@@ -71,7 +71,7 @@
     font-weight: bold;
 
     &:hover {
-        background-color: #8C3C5E;
+        background-color: var(--secondary-color);
     }
 }
 

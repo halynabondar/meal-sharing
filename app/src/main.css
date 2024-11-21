@@ -1,3 +1,8 @@
+:root {
+  --main-color: #A64D79;
+  --secondary-color: #6A1E55;
+  --dark: #3B1C32;
+}
 html,
 body,
 #root {

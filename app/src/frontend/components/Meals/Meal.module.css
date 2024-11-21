@@ -51,7 +51,7 @@ a {
 .mealBtn {
     font-weight: bold;
     border: none;
-    background-color: #A64D79;
+    background-color: var(--main-color);
     color: white;
     padding: 5px 15px;
     border-radius: 7px;
@@ -60,7 +60,7 @@ a {
     &:hover {
         cursor: pointer;
         color: white;
-        background-color: #6A1E55;
+        background-color: var(--secondary-color);
     }
 }
 .mealItemBottom {

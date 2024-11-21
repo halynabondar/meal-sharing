@@ -12,7 +12,7 @@
 .title {
     margin: 30px 0 20px;
     font-size: 3rem;
-    color: #A64D79;
+    color: var(--main-color);
 }
 .text {
     font-size: 20px;
@@ -22,7 +22,7 @@
     align-self: start;
 }
 .btn {
-    background-color: #A64D79;
+    background-color: var(--main-color);
     border-radius: 10px;
     padding: 10px 16px;
     color: white;
@@ -33,7 +33,7 @@
     align-self: start;
 
     &:hover {
-        background-color: #6A1E55;
+        background-color: var(--secondary-color);
         color: white;
     }
 }
