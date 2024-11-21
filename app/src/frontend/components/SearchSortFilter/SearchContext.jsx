@@ -18,11 +18,15 @@ export const SearchProvider = ({children}) => {
 
     const fetchResults = async (searchParams) => {
         try {
-            const response = await fetch(`https://localhost:3007/api/search?query=${searchParams}`, {
-                method: 'POST', body: JSON.stringify(searchParams),
+            const response = await fetch("https://localhost:3007/api/search", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(searchParams),
             });
             const data = await response.json();
-            dispatch({type: "SET_RESULTS", payload: data});
+            dispatch({ type: "SET_RESULTS", payload: data });
         } catch (error) {
             console.error("Error fetching results:", error);
         }
@@ -40,4 +44,10 @@ export const SearchProvider = ({children}) => {
     );
 }
 
-export const useSearch = () => useContext(SearchContext);
+export const useSearch = () => {
+    const context = useContext(SearchContext);
+    if (!context) {
+        console.error("useSearch must be used within a SearchProvider");
+    }
+    return context;
+}

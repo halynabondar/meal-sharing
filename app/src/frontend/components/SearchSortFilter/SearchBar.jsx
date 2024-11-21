@@ -6,21 +6,10 @@ function SearchBar() {
     const {fetchResults} = useSearch();
     const [query, setQuery] = useState("");
 
-    const handleSearch = () => {
+    const handleSearch = (e) => {
+        e.preventDefault();
         fetchResults({query});
     }
-
-    // const handleInputChange = (e) => {
-    //     setQuery(e.target.value);
-    // };
-    //
-    // const handleFormSubmit = async (e) => {
-    //     e.preventDefault();
-    //     if (!query.trim()) return;
-    //     if (onSearch) {
-    //         onSearch(query);
-    //     }
-    // };
 
     return (
         <>

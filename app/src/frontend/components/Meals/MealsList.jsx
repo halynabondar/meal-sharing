@@ -1,11 +1,12 @@
 import Meal from "./Meal.jsx";
-import React, { useEffect, useState } from "react";
+import React, {useEffect, useState, useCallback} from "react";
 import styles from "./MealList.module.css";
 import Navbar from "../Navbar.jsx";
 import SortBar from "../SearchSortFilter/SortBar.jsx";
 import Footer from "../Footer/Footer.jsx";
-import SearchPage from "../SearchSortFilter/SearchPage.jsx";
-import Results from "../SearchSortFilter/Results.jsx";
+import SearchBar from "../SearchSortFilter/SearchBar.jsx";
+import {SearchProvider} from "../SearchSortFilter/SearchContext.jsx";
+import FilterBar from "../SearchSortFilter/FilterBar.jsx";
 
 function MealsList() {
     const [meals, setMeals] = useState([]);
@@ -17,9 +18,9 @@ function MealsList() {
         setVisibleCount((prev) => prev + 9);
     };
 
-    const fetchData = async () => {
+    const fetchData = useCallback(async () => {
         try {
-            const searchParams = new URLSearchParams(document.location.search);
+            const searchParams = new URLSearchParams(window.location.search);
             const query = searchParams.toString();
             const response = await fetch(`http://localhost:3007/api/meals?${query}`);
             if (!response.ok) throw new Error("Failed to fetch meals");
@@ -30,7 +31,7 @@ function MealsList() {
         } finally {
             setIsLoading(false);
         }
-    };
+    }, []);
 
     useEffect(() => {
         fetchData();
@@ -38,38 +39,40 @@ function MealsList() {
 
     return (
         <>
-            <Navbar />
-            <SearchPage />
-            <SortBar />
-            <Results />
-            <section className={styles.container}>
-                <div className={styles.aside}>
-
-                </div>
-                <div className={styles.column}>
-                    <div className={styles.mealsContainer}>
-                        {isLoading ? (
-                            <p>Loading meals...</p>
-                        ) : error ? (
-                            <p className={styles.error}>{error}</p>
-                        ) : meals.length > 0 ? (
-                            meals.slice(0, visibleCount).map((meal) => (
-                                <Meal key={meal.id} meal={meal} />
-                            ))
-                        ) : (
-                            <p>No meals available.</p>
-                        )}
+            <SearchProvider>
+                <Navbar />
+                <SearchBar />
+                <section className={styles.container}>
+                    <div className={styles.aside}>
+                        <SortBar />
+                        <FilterBar />
                     </div>
-                    <div>
-                        {visibleCount < meals.length && (
-                            <button onClick={showMoreMeals} className={styles.showMoreBtn} aria-label="Show more meals">
-                                Show More
-                            </button>
-                        )}
+                    <div className={styles.column}>
+                        <div className={styles.mealsContainer}>
+                            {isLoading ? (
+                                <p>Loading meals...</p>
+                            ) : error ? (
+                                <p className={styles.error}>{error}</p>
+                            ) : meals.length > 0 ? (
+                                meals.slice(0, visibleCount).map((meal) => (
+                                    <Meal key={meal.id} meal={meal}/>
+                                ))
+                            ) : (
+                                <p>No meals available.</p>
+                            )}
+                        </div>
+                        <div>
+                            {visibleCount < meals.length && (
+                                <button onClick={showMoreMeals} className={styles.showMoreBtn}
+                                        aria-label="Show more meals">
+                                    Show More
+                                </button>
+                            )}
+                        </div>
                     </div>
-                </div>
-            </section>
-            <Footer />
+                </section>
+            </SearchProvider>
+            <Footer/>
         </>
     );
 }
