@@ -1,7 +1,7 @@
 .footer {
     width: 1200px;
     margin: 0 auto;
-    border-top: var(--dark) solid 1px;
+    border-top: var(--dark-color) solid 1px;
     display: flex;
     flex-direction: column;
     padding: 30px;

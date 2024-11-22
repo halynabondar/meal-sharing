@@ -32,11 +32,11 @@
     font-size: 16px;
     cursor: pointer;
     border-radius: 13px;
-    background-color: var(--secondary-color);
+    background-color: var(--dark-color);
     color: white;
     transition: background-color 0.3s;
 
     &:hover {
-        background-color: var(--main-color);
+        background-color: var(--bright-color);
     }
 }

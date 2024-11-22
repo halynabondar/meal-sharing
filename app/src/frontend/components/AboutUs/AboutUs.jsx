@@ -35,7 +35,7 @@ export default function AboutUs() {
                         unique experience. By opening our tables to new faces, we build lasting friendships, share
                         stories, and create memories that warm our hearts long after the meal is over.</p>
                     <p className={styles.text}>Join us as we celebrate the joy of sharing, one plate at a time.</p>
-                    <button className={styles.btn} onClick={handleFindMeal}>Find a meal</button>
+                    <button className={styles.btn} onClick={handleFindMeal}>Find meal</button>
                 </section>
             </div>
             <Footer />
