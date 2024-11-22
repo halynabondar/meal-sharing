@@ -1,9 +1,9 @@
 .searchForm {
     display: flex;
-    gap: 10px;
+    gap: 15px;
     position: relative;
     width: 500px;
-    margin: 100px 0 20px 160px;
+    margin: 100px 0 20px 140px;
 }
 .searchBtn {
     cursor: pointer;

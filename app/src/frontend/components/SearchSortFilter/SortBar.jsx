@@ -15,10 +15,10 @@ function SortBar() {
     return (
         <>
             <fieldset className={styles.panel}>
-                <legend className={styles.legend}>Sort by:</legend>
+                <h4 className={styles.title}>Sort by</h4>
                 <div className={styles.items}>
                     <div className={styles.item}>
-                        <input className={styles.input} value='name' checked={setSortOptions === 'name'} onChange={handleSortChange} type="radio" id="name" name="sortBy"></input>
+                        <input className={styles.input} value="name" checked={sortOptions === "name"} onChange={handleSortChange} type="radio" id="name" name="sortBy"></input>
                         <label htmlFor="name">Name</label>
                     </div>
                     <div className={styles.item}>

@@ -2,6 +2,11 @@
 // import SearchBar from "./SearchBar.jsx";
 // import Meal from "../Meals/Meal.jsx";
 //
+// function objToQueryString(obj) {
+//     const params = new URLSearchParams(obj);
+//     return params.toString();
+// }
+//
 // function SearchContainer() {
 //     const [results, setResults] = useState([]);
 //     const [loading, setLoading] = useState(false);
@@ -10,8 +15,10 @@
 //     const handleSearch = async (query) => {
 //         setLoading(true);
 //         setError(null);
+//         const queryString = objToQueryString(query);
+//
 //         try {
-//             const response = await fetch(`/api/search?query=${query}`);
+//             const response = await fetch(`/api/search?${queryString}`);
 //             if (!response.ok) {
 //                 throw new Error(`Error: ${response.statusText}`);
 //             }

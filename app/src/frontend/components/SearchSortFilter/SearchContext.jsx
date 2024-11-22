@@ -18,13 +18,7 @@ export const SearchProvider = ({children}) => {
 
     const fetchResults = async (searchParams) => {
         try {
-            const response = await fetch("https://localhost:3007/api/search", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(searchParams),
-            });
+            const response = await fetch(`https://localhost:3007/api/meals?${searchParams}`);
             const data = await response.json();
             dispatch({ type: "SET_RESULTS", payload: data });
         } catch (error) {

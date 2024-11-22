@@ -137,23 +137,6 @@ mealsRouter.get("/:meal_id/reviews", async (req, res, next) => {
     }
 });
 
-// Updated searchMeals function and search route
-const searchMeals = async (name) => {
-    return knex("meal").where("name", "like", `%${name}%`);
-};
-
-mealsRouter.get("/search", async (req, res, next) => {
-    const { title } = req.query;
-    if (!title) return res.status(400).json({ error: "Name parameter is required" });
-
-    try {
-        const results = await searchMeals(title);
-        res.json(results);
-    } catch (error) {
-        next(error);
-    }
-});
-
 mealsRouter.use((err, req, res, next) => {
     console.error(err);
     res.status(500).json({ error: "Something went wrong" });

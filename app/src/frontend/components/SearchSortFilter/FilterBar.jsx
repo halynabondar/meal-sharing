@@ -6,6 +6,7 @@ import DatePickerPanel from "../Date.jsx";
 
 function FilterBar() {
     const {setFilters} = useSearch();
+    console.log(useSearch());
     const [priceRange, setPriceRange] = useState([150, 300]);
 
     const handleFilterChange = () => {
@@ -21,23 +22,25 @@ function FilterBar() {
     return (
         <>
             <fieldset className={styles.panel}>
-                <legend className={styles.legend}>Filter by:</legend>
-                <legend className={styles.legend}>By price:</legend>
-                <div className={styles.items}>
-                    <Slider
-                        getAriaLabel={() => 'Temperature range'}
-                        value={priceRange}
-                        onChange={handleChange}
-                        valueLabelDisplay="auto"
-                        getAriaValueText={valuetext}
-                        min={0} max={500}
-                    />
-                    <legend className={styles.legend}>By date:</legend>
-                    <DatePickerPanel />
-                    <legend className={styles.legend}>By availability:</legend>
-                    <div className={styles.item}>
-                        <input className={styles.input} type="Checkbox" id="available" name="available"></input>
-                        <label htmlFor="available">Available only</label>
+                <h4 className={styles.title}>Filter by</h4>
+                <div className={styles.item}>
+                    <legend className={styles.legend}>By price:</legend>
+                    <div className={styles.items}>
+                        <Slider
+                            getAriaLabel={() => 'Temperature range'}
+                            value={priceRange}
+                            onChange={handleChange}
+                            valueLabelDisplay="auto"
+                            getAriaValueText={valuetext}
+                            min={0} max={500}
+                        />
+                        <legend className={styles.legend}>By date:</legend>
+                        <DatePickerPanel/>
+                        <legend className={styles.legend}>By availability:</legend>
+                        <div className={styles.item}>
+                            <input className={styles.input} type="Checkbox" id="available" name="available"></input>
+                            <label htmlFor="available">Available only</label>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.itemsBtn}>
