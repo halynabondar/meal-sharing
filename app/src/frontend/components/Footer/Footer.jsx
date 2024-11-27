@@ -18,11 +18,11 @@ export default function Footer() {
             </ul>
             <div className={styles.footerColumn}>
                 <div className={styles.logos}>
-                    <FontAwesomeIcon icon={faGithub} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faFacebook} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faGoogle} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faInstagram} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon icon={faTwitter} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
+                    <FontAwesomeIcon className={styles.logoItem} icon={faGithub} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
+                    <FontAwesomeIcon className={styles.logoItem} icon={faFacebook} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
+                    <FontAwesomeIcon className={styles.logoItem} icon={faGoogle} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
+                    <FontAwesomeIcon className={styles.logoItem} icon={faInstagram} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
+                    <FontAwesomeIcon className={styles.logoItem} icon={faTwitter} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
                 </div>
                 <p className={styles.text}>&copy; 2024 All rights reserved</p>
             </div>

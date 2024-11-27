@@ -28,11 +28,8 @@
     align-items: center;
     gap: 1rem;
 }
-.logoItem img {
-    width: 40px;
-    object-fit: cover;
-    height: 35px;
-    border-radius: 20%;
+.logoItem {
+    font-size: 24px;
 }
 .text {
     text-align: center;

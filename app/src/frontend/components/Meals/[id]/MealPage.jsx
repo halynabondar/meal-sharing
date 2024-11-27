@@ -30,7 +30,6 @@ function MealPage() {
         <>
             <Navbar/>
             <div className={styles.container}>
-                <h1 className={styles.title}>Meal Details for Id: {id}</h1>
                 <div>
                     {meal ? (
                         <MealDetails key={meal.id} meal={meal}/>
