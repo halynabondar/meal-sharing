@@ -1,4 +1,4 @@
-import React, {createContext, useContext, useReducer} from "react";
+import React, {createContext, useContext, useEffect, useReducer} from "react";
 
 const SearchContext = createContext();
 
@@ -16,9 +16,20 @@ const searchReducer = (state, action) => {
 export const SearchProvider = ({children}) => {
     const [state, dispatch] = useReducer(searchReducer, {results: [], filters: {}});
 
+
+
+    const objectToQueryParams = (data) => {
+        if (!data) return '';
+
+        let pairs = [];
+        Object.keys(data).forEach((key) => { pairs.push(`${key}=${data[key]}`); });
+        return pairs.join('&');
+    }
+
+
     const fetchResults = async (searchParams) => {
         try {
-            const response = await fetch(`https://localhost:3007/api/meals?${searchParams}`);
+            const response = await fetch(`http://localhost:3007/api/meals?${objectToQueryParams(searchParams)}`);
             const data = await response.json();
             dispatch({ type: "SET_RESULTS", payload: data });
         } catch (error) {
@@ -26,13 +37,19 @@ export const SearchProvider = ({children}) => {
         }
     }
 
+    useEffect(() => {
+        fetchResults();
+    }, [])
+
+
     const setFilters = (filters) => {
+        console.log('7')
         dispatch({type: "SET_FILTERS", payload: filters});
         fetchResults(filters); // Re-fetch with new filters
     }
 
     return (
-        <SearchContext.Provider value={{state, fetchResults, setFilters}}>
+        <SearchContext.Provider value={{state, fetchResults, setFilters, dispatch}}>
             {children}
         </SearchContext.Provider>
     );
@@ -40,6 +57,7 @@ export const SearchProvider = ({children}) => {
 
 export const useSearch = () => {
     const context = useContext(SearchContext);
+
     if (!context) {
         console.error("useSearch must be used within a SearchProvider");
     }

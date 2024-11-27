@@ -8,7 +8,7 @@ function SearchBar() {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        fetchResults({query});
+        fetchResults({"title": query});
     }
 
     return (

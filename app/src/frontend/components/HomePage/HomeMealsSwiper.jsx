@@ -61,7 +61,7 @@ export default function HomeMealsSwiper() {
                             ))}
                         </Swiper>
                         : (
-                            <p>Loading reviews...</p>
+                            <p>Loading meals...</p>
                         )}
                 </div>
                 <div className={styles.btnContainer}>
