@@ -1,18 +1,20 @@
-.swiperContainer {}
-.swiperItem {}
-.mySwiper {
-    width: 1100px;
-    height: 200px;
+.swiperContainer {
+    margin: 50px auto;
+}
+.swiperItem {
+    display: flex;
+    width: 70%;
     margin: 30px auto;
 }
 .reviewItem {
     background-color: white;
-    width: 360px;
+    width: 350px;
     height: auto;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 15px;
     padding: 20px;
     border: 1px solid lightgray;
+    margin-bottom: 60px;
 }
 .reviewTop {
     display: flex;
