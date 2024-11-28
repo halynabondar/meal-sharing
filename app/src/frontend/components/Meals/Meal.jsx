@@ -50,7 +50,7 @@ function Meal({meal}) {
         <div className={styles.mealItem} style={{
             backgroundImage: `url(${meal.image_url})`
         }}>
-            <div className={styles.mealPrice}>{meal.price} kr.</div>
+            <div className={styles.mealPrice}>{meal.price}<span> kr.</span></div>
             <div className={styles.mealTitle}>{meal.title}</div>
             <div className={styles.mealStars}>
                 <span className={styles.span}>{averageRating.toFixed(1)}</span> {renderStars()}
