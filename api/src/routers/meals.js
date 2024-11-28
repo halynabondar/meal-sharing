@@ -30,8 +30,8 @@ mealsRouter.get('/', async (req, res, next) => {
                 .havingRaw(hasSpots ? "COUNT(reservation.id) < meal.max_reservations" : "COUNT(reservation.id) >= meal.max_reservations");
         }
         if (title) query.where('title', 'like', `%${title}%`);
-        if (dateAfter) query.where('date', '>=', dateAfter);
-        if (dateBefore) query.where('date', '<=', dateBefore);
+        if (dateAfter) query.where('when', '>=', dateAfter);
+        if (dateBefore) query.where('when', '<=', dateBefore);
 
         // Sorting and limiting results
         if (sortKey) query.orderBy(sortKey, sortDir || 'asc');
