@@ -8,6 +8,10 @@ const searchReducer = (state, action) => {
             return {...state, results: action.payload};
         case "SET_FILTERS":
             return {...state, filters: action.payload};
+        case "SET_SORTING":
+            return {...state, sort: action.payload};
+        case "SET_SEARCH_QUERY":
+            return {...state, query: action.payload};
         default:
             return state;
     }
@@ -15,9 +19,7 @@ const searchReducer = (state, action) => {
 
 export const SearchProvider = ({children}) => {
     const [state, dispatch] = useReducer(searchReducer, {results: [], filters: {}});
-
-
-
+    const { filters, query, sort } = state;
     const objectToQueryParams = (data) => {
         if (!data) return '';
 
@@ -27,9 +29,9 @@ export const SearchProvider = ({children}) => {
     }
 
 
-    const fetchResults = async (searchParams) => {
+    const fetchResults = async (params) => {
         try {
-            const response = await fetch(`http://localhost:3007/api/meals?${objectToQueryParams(searchParams)}`);
+            const response = await fetch(`http://localhost:3007/api/meals?${objectToQueryParams(params)}`);
             const data = await response.json();
             dispatch({ type: "SET_RESULTS", payload: data });
         } catch (error) {
@@ -37,19 +39,38 @@ export const SearchProvider = ({children}) => {
         }
     }
 
+    const collectRequestParams = () => {
+        const params = {
+            ...filters,
+            title: query,
+            sortKey: sort
+
+        }
+        // Remove keys with undefined or null
+        return Object.fromEntries(
+            Object.entries(params).filter(([key, value]) => value !== undefined && value !== null)
+        );
+    }
+
     useEffect(() => {
-        fetchResults();
-    }, [])
+        fetchResults(collectRequestParams());
+    }, [filters, query, sort]);
 
 
-    const setFilters = (filters) => {
-        console.log('7')
-        dispatch({type: "SET_FILTERS", payload: filters});
-        fetchResults(filters); // Re-fetch with new filters
+    const setFilters = (data) => {
+        dispatch({type: "SET_FILTERS", payload: data});
+    }
+
+    const setSearchQuery = (data) => {
+        dispatch({type: "SET_SEARCH_QUERY", payload: data});
+    }
+
+    const setSorting = (data) => {
+        dispatch({type: "SET_SORTING", payload: data});
     }
 
     return (
-        <SearchContext.Provider value={{state, fetchResults, setFilters, dispatch}}>
+        <SearchContext.Provider value={{state, fetchResults, setFilters, setSearchQuery, setSorting}}>
             {children}
         </SearchContext.Provider>
     );
