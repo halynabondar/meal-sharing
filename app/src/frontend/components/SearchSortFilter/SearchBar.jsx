@@ -14,10 +14,13 @@ function SearchBar() {
 
     return (
         <>
-            <form className={styles.searchForm} onSubmit={handleSearch}>
-                <input className={styles.searchInput} value={query} onChange={(e) => setQuery(e.target.value)} type="text" id="input" name="search" placeholder="Search..." />
-                <button className={styles.searchBtn} type="submit">Search</button>
-            </form>
+            <div className={styles.container}>
+                <form className={styles.searchForm} onSubmit={handleSearch}>
+                    <input className={styles.searchInput} value={query} onChange={(e) => setQuery(e.target.value)}
+                           type="text" id="input" name="search" placeholder="Search..."/>
+                    <button className={styles.searchBtn} type="submit">Search</button>
+                </form>
+            </div>
         </>
     )
 }

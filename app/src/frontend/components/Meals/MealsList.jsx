@@ -14,27 +14,29 @@ function MealsList() {
     return (
         <>
             <SearchProvider>
-                <Navbar />
-                <SearchBar />
-                <section className={styles.container}>
-                    <div className={styles.aside}>
-                        <SortBar />
-                        <FilterBar />
-                    </div>
-                    <div className={styles.column}>
-                        <div className={styles.mealsContainer}>
-                            <Results></Results>
+                <Navbar/>
+                <div className={styles.main}>
+                    <SearchBar/>
+                    <section className={styles.container}>
+                        <div className={styles.aside}>
+                            <SortBar/>
+                            <FilterBar/>
                         </div>
-                        <div>
-                            {/*{visibleCount < meals.length && (*/}
-                            {/*    <button onClick={showMoreMeals} className={styles.showMoreBtn}*/}
-                            {/*            aria-label="Show more meals">*/}
-                            {/*        Show More*/}
-                            {/*    </button>*/}
-                            {/*)}*/}
+                        <div className={styles.column}>
+                            <div className={styles.mealsContainer}>
+                                <Results/>
+                            </div>
+                            <div>
+                                {/*{visibleCount < meals.length && (*/}
+                                {/*    <button onClick={showMoreMeals} className={styles.showMoreBtn}*/}
+                                {/*            aria-label="Show more meals">*/}
+                                {/*        Show More*/}
+                                {/*    </button>*/}
+                                {/*)}*/}
+                            </div>
                         </div>
-                    </div>
-                </section>
+                    </section>
+                </div>
             </SearchProvider>
             <Footer/>
         </>
