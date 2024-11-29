@@ -28,6 +28,7 @@ The main functionalities of this website are:
 -   Node.js
 -   CSS
 -   Swiper.js
+-   MUI
 
 ## What I Learned
 
