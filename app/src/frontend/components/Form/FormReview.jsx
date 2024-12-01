@@ -1,10 +1,26 @@
 import React, {useState} from "react";
 import styles from "./Form.module.css";
 import ReactStars from "react-rating-stars-component";
+import Snackbar from '@mui/material/Snackbar';
+import Alert from '@mui/material/Alert';
 
 function FormReview({modalActive}) {
+    const [open, setOpen] = React.useState(false);
+
     const path = document.location.pathname;
     const idMatch = path.match(/^\/meals\/([^\/]+)$/);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
 
     const [formData, setFormData] = useState({
         title: '',
@@ -90,7 +106,17 @@ function FormReview({modalActive}) {
                         activeColor="#ffa600"
                     />
                 </div>
-                <button className={styles.formBtn}>Add review</button>
+                <button onClick={handleClick} className={styles.formBtn}>Add review</button>
+                <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+                    <Alert
+                        onClose={handleClose}
+                        severity="success"
+                        variant="filled"
+                        sx={{ width: '100%', marginBottom: '150px' }}
+                    >
+                        Review has been added successfully!
+                    </Alert>
+                </Snackbar>
             </form>
         </div>
     );
