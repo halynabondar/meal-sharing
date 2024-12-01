@@ -29,10 +29,10 @@ function SortBar() {
                         <input className={styles.input} value="price" checked={sortOptions === "price"} onChange={handleSortChange} type="radio" id="price" name="sortBy"></input>
                         <label htmlFor="price">Price</label>
                     </div>
-                    {/*<div className={styles.item}>*/}
-                    {/*    <input className={styles.input} value="rating" checked={sortOptions === "rating"} onChange={handleSortChange} type="radio" id="rating" name="sortBy"></input>*/}
-                    {/*    <label htmlFor="rating">Rating</label>*/}
-                    {/*</div>*/}
+                    <div className={styles.item}>
+                        <input className={styles.input} value="rating" checked={sortOptions === "rating"} onChange={handleSortChange} type="radio" id="rating" name="sortBy"></input>
+                        <label htmlFor="rating">Rating</label>
+                    </div>
                 </div>
             </fieldset>
         </>

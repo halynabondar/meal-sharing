@@ -5,7 +5,7 @@ import FormReservation from "../Form/FormReservation.jsx";
 import Modal from "../Form/Modal.jsx";
 import Star from "../Star.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
 
 function MealDetails({meal}) {
     const [modalReviewActive, setModalReviewActive] = useState(false);
@@ -86,8 +86,8 @@ function MealDetails({meal}) {
                         </div>
                         <div className={styles.mealInformation}>
                             <p className={styles.mealDescription}>{meal.description}</p>
-                            <p className={styles.mealLocation}><FontAwesomeIcon icon={faLocationDot} style={{ color: 'blue' }} /> {meal.location}</p>
-                            <p className={styles.mealDate}><b>Date:</b> {swappedDateTime}</p>
+                            <p className={styles.mealLocation}><FontAwesomeIcon icon={faLocationDot} style={{ color: "#EC625F" }} /> {meal.location}</p>
+                            <p className={styles.mealDate}><FontAwesomeIcon icon={faCalendarDay} style={{ color: "#EC625F" }} /> {swappedDateTime}</p>
                             <p className={styles.mealReservations}><b>Available
                                 reservations:</b> {meal.available_reservations}</p>
                             <p className={styles.mealPrice}><b>Price:</b> {meal.price} kr</p>
