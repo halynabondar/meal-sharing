@@ -5,7 +5,7 @@ import FormReservation from "../Form/FormReservation.jsx";
 import Modal from "../Form/Modal.jsx";
 import Star from "../Star.jsx";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import { faLocationDot, faCalendarDay } from "@fortawesome/free-solid-svg-icons";
+import {faLocationDot, faCalendarDay, faUsers, faCoins} from "@fortawesome/free-solid-svg-icons";
 
 function MealDetails({meal}) {
     const [modalReviewActive, setModalReviewActive] = useState(false);
@@ -32,7 +32,9 @@ function MealDetails({meal}) {
                 const data = await response.json();
 
                 let sum = 0;
-                data.forEach(review => {sum = sum + review.stars});
+                data.forEach(review => {
+                    sum = sum + review.stars
+                });
 
                 const average = sum / data.length;
                 setAverageRating(average);
@@ -59,7 +61,7 @@ function MealDetails({meal}) {
         const filledStars = Math.floor(averageRating);
         const totalStars = 5;
 
-        return Array.from({ length: totalStars }, (_, index) => (
+        return Array.from({length: totalStars}, (_, index) => (
             <Star
                 key={index}
                 filled={index < filledStars}
@@ -85,12 +87,25 @@ function MealDetails({meal}) {
                             {renderStars()} <span>{averageRating.toFixed(1)} / 5</span>
                         </div>
                         <div className={styles.mealInformation}>
-                            <p className={styles.mealDescription}>{meal.description}</p>
-                            <p className={styles.mealLocation}><FontAwesomeIcon icon={faLocationDot} style={{ color: "#EC625F" }} /> {meal.location}</p>
-                            <p className={styles.mealDate}><FontAwesomeIcon icon={faCalendarDay} style={{ color: "#EC625F" }} /> {swappedDateTime}</p>
-                            <p className={styles.mealReservations}><b>Available
-                                reservations:</b> {meal.available_reservations}</p>
-                            <p className={styles.mealPrice}><b>Price:</b> {meal.price} kr</p>
+                            <div><p className={styles.mealDescription}>{meal.description}</p></div>
+                            <div className={styles.informationItems}>
+                                <div className={styles.informationItem}>
+                                    <p className={styles.mealLocation}><FontAwesomeIcon className={styles.icon}
+                                                                                        icon={faLocationDot}/> {meal.location}
+                                    </p>
+                                    <p className={styles.mealDate}><FontAwesomeIcon className={styles.icon}
+                                                                                    icon={faCalendarDay}/> {swappedDateTime}
+                                    </p>
+                                </div>
+                                <div className={styles.informationItem}>
+                                    <p className={styles.mealReservations}><FontAwesomeIcon className={styles.icon}
+                                                                                            icon={faUsers}/> {meal.available_reservations}
+                                    </p>
+                                    <p className={styles.mealPrice}><FontAwesomeIcon className={styles.icon}
+                                                                                     icon={faCoins}/> {meal.price} kr
+                                    </p>
+                                </div>
+                            </div>
                         </div>
                         <div className={styles.mealButtons}>
                             <button className={styles.mealBtn} onClick={() => setModalReviewActive(true)}>Review
@@ -102,7 +117,7 @@ function MealDetails({meal}) {
                 </div>
             </div>
             <Modal active={modalReviewActive} setActive={setModalReviewActive}>
-                <FormReview modalActive={setModalReviewActive} onReviewSubmit={handleReviewSubmit} />
+                <FormReview modalActive={setModalReviewActive} onReviewSubmit={handleReviewSubmit}/>
             </Modal>
             <Modal active={modalReserveActive} setActive={setModalReserveActive}>
                 <FormReservation modalActive={setModalReserveActive}/>
