@@ -112,7 +112,7 @@ function FormReview({modalActive}) {
                         onClose={handleClose}
                         severity="success"
                         variant="filled"
-                        sx={{ width: '100%', marginBottom: '150px' }}
+                        sx={{ width: '100%', marginBottom: '-150px' }}
                     >
                         Review has been added successfully!
                     </Alert>
