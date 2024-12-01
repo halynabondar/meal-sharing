@@ -2,8 +2,24 @@
 
 import React, {useState} from "react";
 import styles from "./Form.module.css";
+import Alert from "@mui/material/Alert";
+import Snackbar from "@mui/material/Snackbar";
 
 function FormReservation({modalActive}) {
+    const [open, setOpen] = React.useState(false);
+
+    const handleClick = () => {
+        setOpen(true);
+    };
+
+    const handleClose = (event, reason) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
+    };
+
     const path = document.location.pathname;
     const idMatch = path.match(/^\/meals\/([^\/]+)$/);
     const mealId = idMatch[1];
@@ -85,7 +101,17 @@ function FormReservation({modalActive}) {
                                id="phone"
                                className={styles.formInput} required/>
                     </div>
-                    <button type="submit" className={styles.formBtn}>Add reservation</button>
+                    <button onClick={handleClick}  type="submit" className={styles.formBtn}>Add reservation</button>
+                    <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
+                        <Alert
+                            onClose={handleClose}
+                            severity="success"
+                            variant="filled"
+                            sx={{ width: '100%', marginBottom: '-150px' }}
+                        >
+                            Reservation has been added successfully!
+                        </Alert>
+                    </Snackbar>
                 </form>
             </div>
         </>
