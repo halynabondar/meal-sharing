@@ -107,7 +107,7 @@ function FormReservation({modalActive}) {
                             onClose={handleClose}
                             severity="success"
                             variant="filled"
-                            sx={{ width: '100%', marginBottom: '-150px' }}
+                            sx={{ width: '100%', marginBottom: '-150px', backgroundColor: 'white', color: 'black' }}
                         >
                             Reservation has been added successfully!
                         </Alert>
