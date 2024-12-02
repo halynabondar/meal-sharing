@@ -8,13 +8,13 @@ import HomeMealsSwiper from "./HomeMealsSwiper.jsx";
 function HomePage() {
 
     const backgroundStyle = {
-        backgroundImage: 'url(/background15.webp)',
+        backgroundImage: 'url(/background14.webp)',
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',
-        height: '800px',
+        height: '850px',
         paddingTop: '30px',
-        marginTop: '30px',
+        marginTop: '50px',
     };
     return (
         <>
