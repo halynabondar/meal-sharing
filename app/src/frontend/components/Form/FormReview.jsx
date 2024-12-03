@@ -1,8 +1,6 @@
 import React, {useState} from "react";
 import styles from "./Form.module.css";
 import ReactStars from "react-rating-stars-component";
-import Snackbar from '@mui/material/Snackbar';
-import Alert from '@mui/material/Alert';
 
 function FormReview({modalActive}) {
     const [open, setOpen] = React.useState(false);
@@ -12,14 +10,6 @@ function FormReview({modalActive}) {
 
     const handleClick = () => {
         setOpen(true);
-    };
-
-    const handleClose = (event, reason) => {
-        if (reason === 'clickaway') {
-            return;
-        }
-
-        setOpen(false);
     };
 
     const [formData, setFormData] = useState({
@@ -107,16 +97,6 @@ function FormReview({modalActive}) {
                     />
                 </div>
                 <button onClick={handleClick} className={styles.formBtn}>Add review</button>
-                <Snackbar open={open} autoHideDuration={4000} onClose={handleClose}>
-                    <Alert
-                        onClose={handleClose}
-                        severity="success"
-                        variant="filled"
-                        sx={{ width: '100%', marginBottom: '-150px', backgroundColor: 'white', color: 'black' }}
-                    >
-                        Review has been added successfully!
-                    </Alert>
-                </Snackbar>
             </form>
         </div>
     );
