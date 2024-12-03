@@ -13,12 +13,12 @@ export default function AboutUs() {
     };
 
     const backgroundAboutUs = {
-        backgroundImage: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0) 50%), url(/public/background4.webp)',
-        backgroundSize: '100%',
+        backgroundImage: 'linear-gradient(to bottom right, rgba(255, 255, 255, 0.8) 20%, rgba(255, 255, 255, 0) 50%), url(/background4.webp)',
+        backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         marginTop: '50px',
         backgroundPosition: 'top',
-        height: '800px',
+        height: '100vh',
         width: '100%'
     };
     return (
