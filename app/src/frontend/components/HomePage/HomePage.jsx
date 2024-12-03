@@ -4,14 +4,8 @@ import styles from './HomePage.module.css';
 import Navbar from "../Navbar.jsx";
 import Footer from "../Footer/Footer.jsx";
 import HomeMealsSwiper from "./HomeMealsSwiper.jsx";
-import {useNavigate} from "react-router-dom";
 
 function HomePage() {
-    const navigate = useNavigate();
-
-    const handleClick = () => {
-        navigate('/meals');
-    };
 
     const backgroundStyle = {
         backgroundImage: 'url(/background14.webp)',
