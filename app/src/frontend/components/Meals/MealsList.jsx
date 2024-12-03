@@ -7,6 +7,7 @@ import SearchBar from "../SearchSortFilter/SearchBar.jsx";
 import {SearchProvider} from "../SearchSortFilter/SearchContext.jsx";
 import FilterBar from "../SearchSortFilter/FilterBar.jsx";
 import Results from "../SearchSortFilter/Results.jsx";
+import ResultsPaginator from "../SearchSortFilter/ResultsPaginator.jsx";
 
 
 function MealsList() {
@@ -27,12 +28,7 @@ function MealsList() {
                                 <Results/>
                             </div>
                             <div>
-                                {/*{visibleCount < meals.length && (*/}
-                                {/*    <button onClick={showMoreMeals} className={styles.showMoreBtn}*/}
-                                {/*            aria-label="Show more meals">*/}
-                                {/*        Show More*/}
-                                {/*    </button>*/}
-                                {/*)}*/}
+                                <ResultsPaginator />
                             </div>
                         </div>
                     </section>

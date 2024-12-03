@@ -1,24 +1,52 @@
 import React, {createContext, useContext, useEffect, useReducer} from "react";
+import results from "./Results.jsx";
 
 const SearchContext = createContext();
+
+const resultsPerPage = 6;
+
+const getNextPage = (allResults, currentPage) => {
+    // Calculate next page index
+    const startIndex = currentPage * resultsPerPage;
+    const endIndex = startIndex + resultsPerPage;
+    // Return only the elements within the range
+    return allResults.slice(startIndex, endIndex);
+};
+
 
 const searchReducer = (state, action) => {
     switch (action.type) {
         case "SET_RESULTS":
-            return {...state, results: action.payload};
+            const allResults = action.payload;
+            return {...state, results: getNextPage(allResults, 0),   allResults: allResults, page: 0};
         case "SET_FILTERS":
             return {...state, filters: action.payload};
         case "SET_SORTING":
             return {...state, sort: action.payload};
         case "SET_SEARCH_QUERY":
             return {...state, query: action.payload};
+        case "LOAD_MORE":
+            // Load new results only if there is something to load
+            if (state.results.length < state.allResults.length) {
+                const nextPage = state.page + 1;
+                const nextPageItems = [...state.results, ...getNextPage(state.allResults, nextPage)];
+
+                return {
+                    ...state,
+                    page: nextPage,
+                    results: nextPageItems
+                };
+            } else {
+                // Otherwise return what was before, or basically do nothing and ignore the action
+                return state;
+            }
         default:
             return state;
     }
 };
 
 export const SearchProvider = ({children}) => {
-    const [state, dispatch] = useReducer(searchReducer, {results: [], filters: {}});
+    const [state, dispatch] = useReducer(searchReducer, {results: [], allResults: [], filters: {}});
     const { filters, query, sort } = state;
     const objectToQueryParams = (data) => {
         if (!data) return '';
@@ -44,8 +72,11 @@ export const SearchProvider = ({children}) => {
             ...filters,
             title: query,
             sortKey: sort
-
         }
+        if (params.sortKey === 'rating') {
+            params.sortDir = 'desc';
+        }
+
         // Remove keys with undefined or null
         return Object.fromEntries(
             Object.entries(params).filter(([key, value]) => value !== undefined && value !== null)
@@ -69,8 +100,12 @@ export const SearchProvider = ({children}) => {
         dispatch({type: "SET_SORTING", payload: data});
     }
 
+    const loadMore = () => {
+        dispatch({type: "LOAD_MORE"});
+    }
+
     return (
-        <SearchContext.Provider value={{state, fetchResults, setFilters, setSearchQuery, setSorting}}>
+        <SearchContext.Provider value={{state, fetchResults, setFilters, setSearchQuery, setSorting, loadMore}}>
             {children}
         </SearchContext.Provider>
     );
