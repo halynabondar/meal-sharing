@@ -27,3 +27,9 @@
         background-color: var(--secondary-color);
     }
 }
+
+@media screen and (max-width: 1100px) {
+    .swiperItem {
+        width: 800px;
+    }
+}

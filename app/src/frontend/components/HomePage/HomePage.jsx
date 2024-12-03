@@ -15,10 +15,10 @@ function HomePage() {
 
     const backgroundStyle = {
         backgroundImage: 'url(/background14.webp)',
-        backgroundSize: 'cover',
+        backgroundSize: '100%',
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center',
-        height: '850px',
+        backgroundPosition: 'top',
+        height: '100vh',
         paddingTop: '30px',
         marginTop: '50px',
     };
