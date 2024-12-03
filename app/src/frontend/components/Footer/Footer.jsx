@@ -7,25 +7,36 @@ import {faFacebook, faGithub, faGoogle, faInstagram, faTwitter} from '@fortaweso
 export default function Footer() {
     return (
         <footer className={styles.footer}>
-            <Typography variant="h6" sx={{flexGrow: 1, fontFamily: "Great Vibes", fontSize: 32, textAlign: "center", color: "#313131"}}>
+            <div>
+            <Typography variant="h6" sx={{
+                flexGrow: 1,
+                fontFamily: "Great Vibes",
+                fontSize: 28,
+                textAlign: "left",
+                color: "#313131"
+            }}>
                 Meal Sharing
             </Typography>
+            </div>
             <ul className={styles.list}>
                 <li>Terms of Service</li>
                 <li>Privacy Policy</li>
                 <li>Security</li>
                 <li>Sitemap</li>
             </ul>
-            <div className={styles.footerColumn}>
-                <div className={styles.logos}>
-                    <FontAwesomeIcon className={styles.logoItem} icon={faGithub} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon className={styles.logoItem} icon={faFacebook} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon className={styles.logoItem} icon={faGoogle} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon className={styles.logoItem} icon={faInstagram} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                    <FontAwesomeIcon className={styles.logoItem} icon={faTwitter} color="#EC625F" cursor={"pointer"}></FontAwesomeIcon>
-                </div>
-                <p className={styles.text}>&copy; 2024 All rights reserved</p>
+            <div className={styles.logos}>
+                <FontAwesomeIcon className={styles.logoItem} icon={faGithub} color="#EC625F"
+                                 cursor={"pointer"}></FontAwesomeIcon>
+                <FontAwesomeIcon className={styles.logoItem} icon={faFacebook} color="#EC625F"
+                                 cursor={"pointer"}></FontAwesomeIcon>
+                <FontAwesomeIcon className={styles.logoItem} icon={faGoogle} color="#EC625F"
+                                 cursor={"pointer"}></FontAwesomeIcon>
+                <FontAwesomeIcon className={styles.logoItem} icon={faInstagram} color="#EC625F"
+                                 cursor={"pointer"}></FontAwesomeIcon>
+                <FontAwesomeIcon className={styles.logoItem} icon={faTwitter} color="#EC625F"
+                                 cursor={"pointer"}></FontAwesomeIcon>
             </div>
+            {/*<p className={styles.text}>&copy; 2024 All rights reserved</p>*/}
         </footer>
     );
 }
