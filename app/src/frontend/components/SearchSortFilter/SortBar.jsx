@@ -18,12 +18,12 @@ function SortBar() {
                 <h4 className={styles.title}>Sort by</h4>
                 <div className={styles.items}>
                     <div className={styles.item}>
-                        <input className={styles.input} value="title" checked={sortOptions === "name"} onChange={handleSortChange} type="radio" id="name" name="sortBy"></input>
-                        <label htmlFor="name">Name</label>
+                        <input className={styles.input} value="title" checked={sortOptions === "title"} onChange={handleSortChange} type="radio" id="title" name="sortBy"></input>
+                        <label htmlFor="title">Title</label>
                     </div>
                     <div className={styles.item}>
-                        <input className={styles.input} value="when" checked={sortOptions === "date"} onChange={handleSortChange} type="radio" id="date" name="sortBy"></input>
-                        <label htmlFor="date">Date</label>
+                        <input className={styles.input} value="when" checked={sortOptions === "when"} onChange={handleSortChange} type="radio" id="when" name="sortBy"></input>
+                        <label htmlFor="when">Date</label>
                     </div>
                     <div className={styles.item}>
                         <input className={styles.input} value="price" checked={sortOptions === "price"} onChange={handleSortChange} type="radio" id="price" name="sortBy"></input>
