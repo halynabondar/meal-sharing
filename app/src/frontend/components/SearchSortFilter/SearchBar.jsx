@@ -12,12 +12,22 @@ function SearchBar() {
         setSearchQuery(query);
     }
 
+    const clearInput = () => {
+        setQuery("");
+        setSearchQuery("");
+    }
+
     return (
         <>
             <div className={styles.container}>
                 <form className={styles.searchForm} onSubmit={handleSearch}>
-                    <input className={styles.searchInput} value={query} onChange={(e) => setQuery(e.target.value)}
-                           type="text" id="input" name="search" placeholder="Search..."/>
+                    <div className={styles.inputWrapper}>
+                        <input className={styles.searchInput} value={query} onChange={(e) => setQuery(e.target.value)}
+                               type="text" required placeholder="Search..."/>
+                        {query && (
+                            <button type="button" className={styles.clearBtn} onClick={clearInput}>&times;</button>
+                        )}
+                    </div>
                     <button className={styles.searchBtn} type="submit">Search</button>
                 </form>
             </div>
