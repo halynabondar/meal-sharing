@@ -33,7 +33,7 @@
     cursor: pointer;
     transition: all ease 0.3s;
     font-size: 18px;
-    margin-top: 10px;
+    margin-top: 20px;
     align-self: start;
 
     &:hover {

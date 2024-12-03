@@ -1,6 +1,6 @@
 .container {
     max-width: 1200px;
-    margin-left: 40px;
+    margin: 120px 0 0 40px ;
 }
 .inputWrapper {
     position: relative;
