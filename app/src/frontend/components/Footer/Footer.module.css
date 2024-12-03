@@ -1,15 +1,15 @@
 .footer {
-    width: 1200px;
     margin: 0 auto;
     border-top: var(--dark-color) solid 1px;
     display: flex;
-    flex-direction: column;
-    padding: 30px;
+    justify-content: space-between;
+    padding: 20px 90px;
+    gap: 40px;
 }
 
 .list {
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     align-items: center;
     justify-content: center;
     list-style: none;
