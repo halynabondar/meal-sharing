@@ -9,7 +9,8 @@ mealsRouter.get('/', async (req, res, next) => {
         let query = knex('meal');
         const {
             maxPrice, minPrice, availableReservations,
-            title, dateAfter, dateBefore, limit, sortKey, sortDir
+            title, dateAfter, dateBefore, limit, sortKey, sortDir,
+            minRating // Add minRating query parameter
         } = req.query;
 
         // Validations
@@ -18,6 +19,7 @@ mealsRouter.get('/', async (req, res, next) => {
         if (dateAfter && isNaN(Date.parse(dateAfter))) return res.status(400).json({ error: 'Invalid dateAfter' });
         if (dateBefore && isNaN(Date.parse(dateBefore))) return res.status(400).json({ error: 'Invalid dateBefore' });
         if (sortDir && !['asc', 'desc'].includes(sortDir)) return res.status(400).json({ error: 'Invalid sortDir' });
+        if (minRating && (isNaN(parseFloat(minRating)) || parseFloat(minRating) < 0 || parseFloat(minRating) > 5)) return res.status(400).json({ error: 'Invalid minRating' });
 
         // Filters
         if (minPrice) query.where('price', '>=', parseFloat(minPrice));
@@ -33,8 +35,22 @@ mealsRouter.get('/', async (req, res, next) => {
         if (dateAfter) query.where('when', '>=', dateAfter);
         if (dateBefore) query.where('when', '<=', dateBefore);
 
+        // Conditionally add average rating calculation and join with reviews table
+        if (minRating || sortKey === 'rating') {
+            query
+                .leftJoin('review', 'meal.id', 'review.meal_id')
+                .select('meal.*')
+                .select(knex.raw('AVG(review.stars) as average_rating'))
+                .groupBy('meal.id');
+
+            // Apply rating filter
+            if (minRating) {
+                query.havingRaw('AVG(review.stars) >= ?', [parseFloat(minRating)]);
+            }
+        }
+
         // Sorting and limiting results
-        if (sortKey) query.orderBy(sortKey, sortDir || 'asc');
+        if (sortKey) query.orderBy(sortKey === 'rating' ? knex.raw('average_rating') : sortKey, sortDir || 'asc');
         if (limit) query.limit(Math.min(parseInt(limit), 100)); // set an upper limit
 
         const meals = await query;
@@ -43,7 +59,6 @@ mealsRouter.get('/', async (req, res, next) => {
         next(error);
     }
 });
-
 // Route: POST /api/meals - Adds a new meal to the database
 mealsRouter.post('/', async (req, res, next) => {
     try {
