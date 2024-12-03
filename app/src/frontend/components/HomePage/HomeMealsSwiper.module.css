@@ -29,7 +29,16 @@
 }
 
 @media screen and (max-width: 1100px) {
+    .swiperContainer {
+        margin: 30px 0;
+    }
     .swiperItem {
         width: 800px;
+    }
+    .btn {
+        margin-top: 10px;
+    }
+    .btnContainer {
+        margin-top: 10px;
     }
 }

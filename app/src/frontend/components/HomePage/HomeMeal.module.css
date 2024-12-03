@@ -47,6 +47,7 @@
     .mealContainer {
         width: 230px;
         height: 250px;
+        margin: 20px 0 50px 0;
     }
 
     .mealPrice {

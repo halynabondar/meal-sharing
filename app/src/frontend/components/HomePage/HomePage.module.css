@@ -104,4 +104,7 @@
         margin-left: 80px;
         justify-content: left;
     }
+    .btn {
+        margin-bottom: 20px;
+    }
 }
