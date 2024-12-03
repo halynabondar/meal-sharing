@@ -1,10 +1,9 @@
 .container {
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 700px;
     justify-content: left;
 }
 .text {
-    margin-top: 100px;
+    margin: 100px 0 0 100px;
     font-size: 28px;
     line-height: 42px;
     font-style: italic;
@@ -17,7 +16,6 @@
 .containerBtn {
     display: flex;
     justify-content: right;
-    margin-right: 700px;
 }
 .homeBtn {
     background-color: var(--main-color);
@@ -75,6 +73,35 @@
     gap: 50px;
 }
 
-@media screen and (max-width: 1000px) {
-
+@media screen and (max-width: 1200px) {
+    .container {
+        max-width: 550px;
+    }
+    .text {
+        margin: 80px 0 0 100px;
+        font-size: 24px;
+        line-height: 32px;
+        width: 500px;
+    }
+    .homeBtn {
+        margin-top: 20px;
+    }
+}
+@media screen and (max-width: 980px) {
+    .container {
+        max-width: 450px;
+    }
+    .text {
+        margin: 40px 0 0 80px;
+        font-size: 20px;
+        line-height: 28px;
+        width: 375px;
+    }
+    .homeBtn {
+        margin-top: 15px;
+    }
+    .containerBtn {
+        margin-left: 80px;
+        justify-content: left;
+    }
 }
