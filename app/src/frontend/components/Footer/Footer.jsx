@@ -8,15 +8,15 @@ export default function Footer() {
     return (
         <footer className={styles.footer}>
             <div>
-            <Typography variant="h6" sx={{
-                flexGrow: 1,
-                fontFamily: "Great Vibes",
-                fontSize: 28,
-                textAlign: "left",
-                color: "#313131"
-            }}>
-                Meal Sharing
-            </Typography>
+                <Typography variant="h6" sx={{
+                    flexGrow: 1,
+                    fontFamily: "Great Vibes",
+                    fontSize: 28,
+                    // textAlign: "left",
+                    color: "#313131"
+                }}>
+                    Meal Sharing
+                </Typography>
             </div>
             <ul className={styles.list}>
                 <li>Terms of Service</li>
