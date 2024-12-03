@@ -34,8 +34,8 @@ const Navbar = () => {
     );
 
     return (
-        <AppBar position="fixed" sx={{backgroundColor: '#313131', color: 'white'}}>
-            <Toolbar>
+        <AppBar position="fixed" sx={{backgroundColor: '#313131', color: 'white', height: '80px'}}>
+            <Toolbar sx={{ height: '100%', display: 'flex', justifyItems: 'center', alignItems: 'center'}} >
                 <Typography variant="h6" sx={{flexGrow: 1, fontFamily: "Great Vibes", fontSize: 32}}>
                     Meal Sharing
                 </Typography>
@@ -53,7 +53,8 @@ const Navbar = () => {
                     </>
                 ) : (
                     menuItems.map((item) => (
-                        <Button color="inherit" key={item.text} onClick={() => handleNavigation(item.path)}>
+                        <Button sx={{ alignSelf: 'center', '&:hover': {
+                                backgroundColor: '#525252'}, }} color="inherit" key={item.text} onClick={() => handleNavigation(item.path)}>
                             {item.text}
                         </Button>
                     ))
