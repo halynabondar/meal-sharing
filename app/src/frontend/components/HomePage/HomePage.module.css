@@ -38,13 +38,15 @@
     cursor: pointer;
     transition: all ease 0.4s;
     font-size: 18px;
-    font-weight: bold;
     margin-top: 10px;
 
     &:hover {
         background-color: var(--secondary-color);
         color: white;
     }
+}
+.homeBtn a {
+    color: white;
 }
 .link {
     display: flex;

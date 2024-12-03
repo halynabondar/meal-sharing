@@ -27,11 +27,11 @@ function HomePage() {
             <Navbar/>
             <div style={backgroundStyle}>
                 <section className={styles.container}>
-                    {/*<h1 className={styles.title}>We are sharing food</h1>*/}
                     <p className={styles.text}>Bringing people together, one meal at a time – share flavors, create
                         memories, and feel the warmth of community.</p>
                     <div className={styles.containerBtn}>
-                        <button className={styles.homeBtn} onClick={handleClick}>Get started</button>
+                        <button className={styles.homeBtn}><a href="#target-section">Get started</a>
+                        </button>
                     </div>
                 </section>
             </div>

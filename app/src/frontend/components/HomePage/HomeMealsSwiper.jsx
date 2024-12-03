@@ -34,7 +34,7 @@ export default function HomeMealsSwiper() {
 
     return (
         <>
-            <div className={styles.swiperContainer}>
+            <div id="target-section" className={styles.swiperContainer}>
                 <div className={styles.swiperItem}>
                     {meals.length > 0 ?
                         <Swiper
