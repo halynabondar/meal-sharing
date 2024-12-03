@@ -7,7 +7,7 @@
     align-items: center;
     gap: 1rem;
     font-family: 'Montserrat', sans-serif;
-    padding-top: 50px;
+    padding-top: 158px;
 }
 .title {
     margin: 30px 0 20px;
@@ -16,10 +16,14 @@
 }
 .text {
     font-size: 20px;
-    max-width: 700px;
+    width: 466px;
     line-height: 32px;
     text-align: left;
+    font-style: italic;
+    font-weight: bold;
     align-self: start;
+    color: var(--dark-color);
+    text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.7);
 }
 .btn {
     background-color: var(--main-color);
@@ -29,7 +33,7 @@
     cursor: pointer;
     transition: all ease 0.3s;
     font-size: 18px;
-    margin-top: 30px;
+    margin-top: 10px;
     align-self: start;
 
     &:hover {
