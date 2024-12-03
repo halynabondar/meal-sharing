@@ -13,8 +13,10 @@ function SearchBar() {
     }
 
     const clearInput = () => {
-        setQuery("");
-        setSearchQuery("");
+        if (query && query !== "") {
+            setQuery("");
+            setSearchQuery(undefined);
+        }
     }
 
     return (

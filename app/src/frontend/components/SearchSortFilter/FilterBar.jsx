@@ -3,11 +3,14 @@ import styles from "./SortFilter.module.css";
 import {useSearch} from "./SearchContext.jsx";
 import {Slider} from "@mui/material";
 import DatePickerPanel from "../Date.jsx";
+import dayjs from 'dayjs';
+
+const defaultRange = [5, 70];
 
 function FilterBar() {
     const {setFilters} = useSearch();
-    const [priceRange, setPriceRange] = useState([5, 70]);
-    const [date, setDate] = useState('');
+    const [priceRange, setPriceRange] = useState(defaultRange);
+    const [date, setDate] = useState(dayjs());
     const [availableOnly, setAvailableOnly] = useState(false);
 
     const handleFilterChange = () => {
@@ -19,7 +22,12 @@ function FilterBar() {
         })
     }
 
-    const handleFiltersReset = () => {setFilters({})}
+    const handleFiltersReset = () => {
+        setPriceRange(defaultRange);
+        setDate(dayjs());
+        setAvailableOnly(false);
+        setFilters({})
+    }
 
     const handlePriceChange = (event, newValue) => {
         setPriceRange(newValue);
@@ -54,10 +62,11 @@ function FilterBar() {
                         <legend className={styles.legend}>By date:</legend>
                         <DatePickerPanel
                             onChange={handleDateChange}
+                            value={dayjs(date)}
                         />
                         <legend className={styles.legend}>By availability:</legend>
                         <div className={styles.item}>
-                            <input className={styles.input} type="Checkbox" id="available" name="available" onChange={handleAvailabilityChange}></input>
+                            <input className={styles.input} type="Checkbox" id="available" name="available" onChange={handleAvailabilityChange} checked={availableOnly}></input>
                             <label htmlFor="available">Available only</label>
                         </div>
                     </div>
