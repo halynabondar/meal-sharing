@@ -1,6 +1,6 @@
 # Meal Sharing App
 
-➡️ <a href="" target="_blank">**LINK TO THE APP**</a>
+➡️ <a href="https://meal-sharing-ody8.onrender.com/" target="_blank">**LINK TO THE APP**</a>
 
 ## Description
 
@@ -8,7 +8,7 @@ This is a full-stack web application built with JavaScript, Express.js, React, a
 
 It was created as an individual project task for [Hack Your Future](https://github.com/HackYourFuture-CPH) Denmark's curriculum.
 
-The backend of the app was deployed on **[Railway](https://railway.app/)**, while the frontend was deployed on **[Vercel](https://vercel.com/)**.
+The backend and frontend of the app were deployed on **[Render](https://render.com/)**.
 
 The main functionalities of this website are:
 
