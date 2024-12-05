@@ -37,7 +37,7 @@ function MealPage() {
                         <p>Loading meals...</p>
                     )}
                 </div>
-                <Reviews />
+                <Reviews meal_id={id}/>
             </div>
             <Footer />
         </>

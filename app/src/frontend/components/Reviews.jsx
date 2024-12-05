@@ -6,11 +6,12 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import {Pagination} from 'swiper/modules';
 
-export default function Reviews() {
+export default function Reviews({meal_id}) {
     const [reviews, setReviews] = useState([]);
 
     const fetchData = async () => {
         try {
+            // const response = await fetch(`http://localhost:3007/api/meals/${meal_id}/reviews`);
             const response = await fetch(`http://localhost:3007/api/reviews`);
             const data = await response.json();
             setReviews(data);
