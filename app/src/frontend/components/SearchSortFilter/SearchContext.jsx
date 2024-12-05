@@ -6,10 +6,18 @@ const SearchContext = createContext();
 const resultsPerPage = 6;
 
 const getNextPage = (allResults, currentPage) => {
-    // Calculate next page index
+    // Calculate starting and ending indices
+    const totalResults = allResults.length;
     const startIndex = currentPage * resultsPerPage;
+
+    // Check if startIndex is beyond total results, if so return an empty array
+    if (startIndex >= totalResults) {
+        return [];
+    }
+
     const endIndex = startIndex + resultsPerPage;
-    // Return only the elements within the range
+
+    // Extract and return elements within the range, gracefully handling the end
     return allResults.slice(startIndex, endIndex);
 };
 

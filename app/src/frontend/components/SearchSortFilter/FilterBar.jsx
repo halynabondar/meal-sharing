@@ -14,10 +14,12 @@ function FilterBar() {
     const [availableOnly, setAvailableOnly] = useState(false);
 
     const handleFilterChange = () => {
+        const backendData = date.toISOString().replace('T', ' ').replace(/\..+/, '');
+
         setFilters({
             maxPrice: priceRange[1],
             minPrice: priceRange[0],
-            dateBefore: date,
+            dateBefore: backendData,
             availableOnly: availableOnly
         })
     }
@@ -34,8 +36,7 @@ function FilterBar() {
     }
 
     const handleDateChange = (event) => {
-        const dataStr = event.toISOString().replace('T', ' ').replace(/\..+/, '');
-        setDate(dataStr);
+        setDate(event);
     }
 
     const handleAvailabilityChange = (event) => {
