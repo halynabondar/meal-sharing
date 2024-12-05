@@ -8,6 +8,11 @@ import {useNavigate} from 'react-router-dom';
 
 const Navbar = () => {
     const navigate = useNavigate();
+
+    const handleBackHome = () => {
+        navigate('/');
+    }
+
     const theme = useTheme();
     const isMobile = useMediaQuery(theme.breakpoints.down('md'));
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -36,7 +41,7 @@ const Navbar = () => {
     return (
         <AppBar position="fixed" sx={{backgroundColor: '#313131', color: 'white', height: '80px'}}>
             <Toolbar sx={{ height: '100%', display: 'flex', justifyItems: 'center', alignItems: 'center'}} >
-                <Typography variant="h6" sx={{flexGrow: 1, fontFamily: "Great Vibes", fontSize: 32}}>
+                <Typography onClick={handleBackHome} variant="h6" sx={{flexGrow: 1, fontFamily: "Great Vibes", fontSize: 32, cursor: 'pointer'}}>
                     Meal Sharing
                 </Typography>
 
