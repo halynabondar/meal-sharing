@@ -1,5 +1,5 @@
 .swiperContainer {
-    margin: 50px auto;
+    margin: 0 auto;
 }
 .swiperItem {
     display: flex;
@@ -14,7 +14,7 @@
     border-radius: 15px;
     padding: 20px;
     border: 1px solid lightgray;
-    margin-bottom: 60px;
+    margin-bottom: 40px;
 }
 .reviewTop {
     display: flex;

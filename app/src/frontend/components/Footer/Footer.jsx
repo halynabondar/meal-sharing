@@ -12,7 +12,6 @@ export default function Footer() {
                     flexGrow: 1,
                     fontFamily: "Great Vibes",
                     fontSize: 28,
-                    // textAlign: "left",
                     color: "#313131"
                 }}>
                     Meal Sharing
@@ -25,15 +24,15 @@ export default function Footer() {
                 <li>Sitemap</li>
             </ul>
             <div className={styles.logos}>
-                <FontAwesomeIcon className={styles.logoItem} icon={faGithub} color="#EC625F"
+                <FontAwesomeIcon className={styles.logoItem} icon={faGithub} color="#525252"
                                  cursor={"pointer"}></FontAwesomeIcon>
-                <FontAwesomeIcon className={styles.logoItem} icon={faFacebook} color="#EC625F"
+                <FontAwesomeIcon className={styles.logoItem} icon={faFacebook} color="#525252"
                                  cursor={"pointer"}></FontAwesomeIcon>
-                <FontAwesomeIcon className={styles.logoItem} icon={faGoogle} color="#EC625F"
+                <FontAwesomeIcon className={styles.logoItem} icon={faGoogle} color="#525252"
                                  cursor={"pointer"}></FontAwesomeIcon>
-                <FontAwesomeIcon className={styles.logoItem} icon={faInstagram} color="#EC625F"
+                <FontAwesomeIcon className={styles.logoItem} icon={faInstagram} color="#525252"
                                  cursor={"pointer"}></FontAwesomeIcon>
-                <FontAwesomeIcon className={styles.logoItem} icon={faTwitter} color="#EC625F"
+                <FontAwesomeIcon className={styles.logoItem} icon={faTwitter} color="#525252"
                                  cursor={"pointer"}></FontAwesomeIcon>
             </div>
             {/*<p className={styles.text}>&copy; 2024 All rights reserved</p>*/}

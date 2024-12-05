@@ -1,9 +1,12 @@
 .container {
-    padding: 70px 0 20px 0;
-    background: #f1f1f1;
+    padding: 70px 0 10px 0;
+    background: white;
     width: 1050px;
-    margin: 50px auto;
+    margin: 0 auto;
     /*box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);*/
+}
+.item {
+    margin-top: 50px;
 }
 .title {
     text-align: center;

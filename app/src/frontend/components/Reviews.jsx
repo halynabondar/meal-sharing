@@ -31,7 +31,7 @@ export default function Reviews({meal_id}) {
                     {reviews.length > 0 ? (
                         <Swiper
                             slidesPerView={2}
-                            spaceBetween={30}
+                            spaceBetween={20}
                             loop={true}
                             pagination={{
                                 clickable: true,

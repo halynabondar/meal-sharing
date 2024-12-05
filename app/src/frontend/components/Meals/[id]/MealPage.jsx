@@ -30,7 +30,7 @@ function MealPage() {
         <>
             <Navbar/>
             <div className={styles.container}>
-                <div>
+                <div className={styles.item}>
                     {meal ? (
                         <MealDetails key={meal.id} meal={meal}/>
                     ) : (

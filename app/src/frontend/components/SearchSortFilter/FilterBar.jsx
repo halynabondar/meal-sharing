@@ -5,7 +5,7 @@ import {Slider} from "@mui/material";
 import DatePickerPanel from "../Date.jsx";
 import dayjs from 'dayjs';
 
-const defaultRange = [5, 70];
+const defaultRange = [20, 70];
 
 function FilterBar() {
     const {setFilters} = useSearch();
