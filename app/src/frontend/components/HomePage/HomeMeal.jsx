@@ -42,17 +42,19 @@ function HomeMeal({meal}) {
 
     return (
         <>
-            <div className={styles.mealContainer} style={{
-                backgroundImage: `url(${meal.image_url})`
-            }}>
-                <div className={styles.mealPrice}>{meal.price} kr.</div>
-                <div className={styles.mealTitle}>{meal.title}</div>
-                <div className={styles.mealStars}>
-                    <span className={styles.span}>{averageRating.toFixed(1)}</span> {renderStars()}
+            <a href={`/meals/${meal.id}`}>
+                <div className={styles.mealContainer} style={{
+                    backgroundImage: `url(${meal.image_url})`
+                }}>
+                    <div className={styles.mealPrice}>{meal.price} kr.</div>
+                    <div className={styles.mealTitle}>{meal.title}</div>
+                    <div className={styles.mealStars}>
+                        <span className={styles.span}>{averageRating.toFixed(1)}</span> {renderStars()}
+                    </div>
                 </div>
-            </div>
+            </a>
         </>
-    );
+    )
 }
 
 export default HomeMeal;
