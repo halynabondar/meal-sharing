@@ -12,7 +12,7 @@ function HomePage() {
         backgroundSize: '100%',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'top',
-        height: '100vh',
+        height: '800px',
         paddingTop: '30px',
         marginTop: '50px',
     };
