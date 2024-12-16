@@ -14,13 +14,13 @@ It was created as an individual project task for [Hack Your Future](https://gith
 
 📅 Making a reservation.
 
-4️⃣ ✍️ Leaving a review for a meal.
+✍️ Leaving a review for a meal.
 
-5️⃣ 📈 Sorting meals by different criteria.
+📈 Sorting meals by different criteria.
 
-6️⃣ 🧹 Filtering meals to find the perfect option.
-7️⃣ 🔍 View available meals and see detailed information for each one.
-8️⃣ ✍️ A user-friendly interface that makes booking simple and intuitive.
+🧹 Filtering meals to find the perfect option.
+
+🔍 View available meals and see detailed information for each one.
 
 ## Technologies Used
 
