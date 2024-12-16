@@ -1,5 +1,4 @@
 import React, {createContext, useContext, useEffect, useReducer} from "react";
-import results from "./Results.jsx";
 
 const SearchContext = createContext();
 
