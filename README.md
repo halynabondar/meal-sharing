@@ -8,12 +8,13 @@ It was created as an individual project task for [Hack Your Future](https://gith
 
 The main functionalities of this website are:
 
--   Displaying the meals in the database
--   Searching for a meal
--   Making a reservation
--   Leaving a review
--   Sorting meals
--   Filtering meals
+-   Displaying the meals from the database.
+-   Searching for a meal.
+-   Making a reservation.
+-   Leaving a review for a meal.
+-   Sorting meals by different criteria.
+-   Filtering meals to find the perfect option.
+-   View available meals and see detailed information for each one.
 
 ## Technologies Used
 
@@ -25,10 +26,11 @@ The main functionalities of this website are:
 -   CSS
 -   Swiper.js
 -   Material UI
+-   Vite
 
 ## What I Learned
 
-<p>During the development of this project, I faced several challenges that helped me learn new skills and technologies. Some of the challenges I faced include building a Star component for leaving a rating for a meal, a Modal component.</p>
+<p>During the development of this project, I faced several challenges that helped me learn new skills and technologies.</p>
 
 <p>Through these challenges, I was able to gain a better understanding of React, CSS Modules, and Frontend Development in general. I also learned how to work with Express.js, KnexJS, and MySQL to build a full-stack web application.</p>
 
