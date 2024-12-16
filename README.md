@@ -6,15 +6,16 @@ This is a full-stack web application built with JavaScript, Express.js, React, a
 
 It was created as an individual project task for [Hack Your Future](https://github.com/HackYourFuture-CPH) Denmark's curriculum.
 
-The main functionalities of this website are:
+💡 Key features of the project:
 
--   Displaying the meals from the database.
--   Searching for a meal.
--   Making a reservation.
--   Leaving a review for a meal.
--   Sorting meals by different criteria.
--   Filtering meals to find the perfect option.
--   View available meals and see detailed information for each one.
+1️⃣ 🍽️ Displaying meals from the database.
+2️⃣ 🔍 Searching for a meal.
+3️⃣ 📅 Making a reservation.
+4️⃣ ✍️ Leaving a review for a meal.
+5️⃣ 📈 Sorting meals by different criteria.
+6️⃣ 🧹 Filtering meals to find the perfect option.
+7️⃣ 🔍 View available meals and see detailed information for each one.
+8️⃣ ✍️ A user-friendly interface that makes booking simple and intuitive.
 
 ## Technologies Used
 
@@ -39,3 +40,8 @@ The main functionalities of this website are:
 <p>Overall, this project was a great learning experience for me and helped me grow as a developer.</p>
 
 ## Screenshots
+
+<img src="app/public/1.png">
+<img src="app/public/2.png">
+<img src="app/public/3.png">
+<img src="app/public/4.png">
