@@ -8,9 +8,9 @@ It was created as an individual project task for [Hack Your Future](https://gith
 
 💡 Key features of the project:
 
-1️⃣ 🍽️ Displaying meals from the database.
-2️⃣ 🔍 Searching for a meal.
-3️⃣ 📅 Making a reservation.
+🍽️ Displaying meals from the database.
+🔍 Searching for a meal.
+📅 Making a reservation.
 4️⃣ ✍️ Leaving a review for a meal.
 5️⃣ 📈 Sorting meals by different criteria.
 6️⃣ 🧹 Filtering meals to find the perfect option.
