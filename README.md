@@ -40,7 +40,7 @@ It was created as an individual project task for [Hack Your Future](https://gith
 
 ## Screenshots
 
-<img src="app/public/1.png">
-<img src="app/public/2.png">
-<img src="app/public/3.png">
-<img src="app/public/4.png">
+<img src="app/public/1.png" alt="screenshot">
+<img src="app/public/2.png" alt="screenshot">
+<img src="app/public/3.png" alt="screenshot">
+<img src="app/public/4.png" alt="screenshot">
