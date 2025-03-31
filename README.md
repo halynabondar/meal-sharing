@@ -38,6 +38,23 @@ It was created as an individual project task for [Hack Your Future](https://gith
 
 <p>Overall, this project was a great learning experience for me and helped me grow as a developer.</p>
 
+## 🏗️ How to Run the Project
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/halynabondar/meal-sharing.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3.	Start the project:
+   ```bash
+   npm run dev
+   ```
+
 ## Screenshots
 
 ![1.png](app/public/1.png)
