@@ -41,8 +41,6 @@ It was created as an individual project task for [Hack Your Future](https://gith
 ## Screenshots
 
 ![1.png](app/public/1.png)
-
-[//]: # (<img src="app/public/1.png" alt="screenshot">)
-<img src="app/public/2.png" alt="screenshot">
-<img src="app/public/3.png" alt="screenshot">
-<img src="app/public/4.png" alt="screenshot">
+![2.png](app/public/2.png)
+![3.png](app/public/3.png)
+![4.png](app/public/4.png)
