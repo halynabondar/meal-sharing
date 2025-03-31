@@ -53,7 +53,7 @@ It was created as an individual project task for [Hack Your Future](https://gith
 3.	Start the project:
    ```bash
    npm run dev
-   ```
+```
 
 ## Screenshots
 
