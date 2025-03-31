@@ -16,7 +16,7 @@ It was created as an individual project task for [Hack Your Future](https://gith
 🧹 Filtering meals to find the perfect option. <br/>
 🔍 View available meals and see detailed information for each one. <br/>
 
-## Technologies Used
+## 🛠️ Technologies Used
 
 -   Express.js
 -   Knex.js
@@ -40,7 +40,9 @@ It was created as an individual project task for [Hack Your Future](https://gith
 
 ## Screenshots
 
-<img src="app/public/1.png" alt="screenshot">
+![1.png](app/public/1.png)
+
+[//]: # (<img src="app/public/1.png" alt="screenshot">)
 <img src="app/public/2.png" alt="screenshot">
 <img src="app/public/3.png" alt="screenshot">
 <img src="app/public/4.png" alt="screenshot">
